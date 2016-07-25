@@ -1,0 +1,42 @@
+package com.jxapq.vo;
+
+public class TreeNode {
+	private String id;
+	private String pid;
+	private String name;
+	private static boolean isParent = true;
+	
+	public String getId() {
+		return id;
+	}
+
+	public boolean getIsParent() {
+		return isParent;
+	}
+
+	public void setIsParent(boolean isParent) {
+		TreeNode.isParent = isParent;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPid() {
+		return pid;
+	}
+
+	public void setPid(String pid) {
+		this.pid = pid;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+}

@@ -1,0 +1,15 @@
+package com.jxapq.service.util;
+
+import java.io.File;
+import java.io.IOException;
+
+public class FileUtils {
+	public static boolean isFileExisted(String path) throws IOException{
+		 File file= new File(path);
+		 boolean flag=file.exists();
+		 if(!flag){
+			 throw new IOException("文件不存在！");
+		 }
+		 return flag;
+	}
+}

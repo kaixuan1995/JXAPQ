@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/JXAPQ/!svn/ver/282/JXAPQ/src/com/jxapq/service/properties
+END
+CountSpecies.properties
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/JXAPQ/!svn/ver/204/JXAPQ/src/com/jxapq/service/properties/CountSpecies.properties
+END
+EmailUtil.properties
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/JXAPQ/!svn/ver/282/JXAPQ/src/com/jxapq/service/properties/EmailUtil.properties
+END
+VoName.properties
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/JXAPQ/!svn/ver/164/JXAPQ/src/com/jxapq/service/properties/VoName.properties
+END
+TableName.properties
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/JXAPQ/!svn/ver/164/JXAPQ/src/com/jxapq/service/properties/TableName.properties
+END
+Service.properties
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/JXAPQ/!svn/ver/72/JXAPQ/src/com/jxapq/service/properties/Service.properties
+END

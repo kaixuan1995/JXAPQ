@@ -1,0 +1,367 @@
+package com.jxapq.dao.impl;
+
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import com.jxapq.dao.BaseDao;
+import com.jxapq.dao.util.ConvertString;
+import com.jxapq.dao.util.DBUtil;
+import com.jxapq.dao.util.ParseXML;
+import com.jxapq.dao.util.voClass;
+import com.jxapq.exception.DBException;
+
+public class BaseDAOImpl implements BaseDao {
+	
+	String path =this.getClass().getClassLoader().getResource("/").getPath()+"com/jxapq/config/SqlVO.xml";
+	
+	@Override
+	public Boolean save(String ParametersString, String voName, String Operation)
+			throws DBException {
+		
+		
+		// 构建SQL语句
+		String sql = ConvertString.parseString(path,ParametersString, voName,
+				Operation);
+		System.out.println(sql+"-------------------------------------");
+		String[] str = ParametersString.trim().split("%\\+%");
+		String[] value = str[1].trim().split("#%\\$#");
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try {
+			conn = DBUtil.getConnection();
+			ps = conn.prepareStatement(sql);
+			for (int i = 0; i < value.length; i++) {
+				ps.setString((i + 1), value[i]);
+			}
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			DBUtil.release();
+		}
+		System.out.println("save:"+sql);
+		return true;
+	}
+
+	@Override
+	public Boolean update(String ParametersString, String voName,
+			String Operation) throws DBException {
+		if (ParametersString.indexOf("#s#") != -1) {
+			return specialUpdate(ParametersString, voName, Operation);
+		} else {
+			return generalUpdate(ParametersString, voName, Operation);
+		}
+	}
+
+	private Boolean specialUpdate(String ParametersString, String voName,
+			String Operation) {
+		// 构建SQL语句
+		String sql = ConvertString.parseString(path,ParametersString, voName,
+				Operation);
+		String[] str = ParametersString.trim().split("%\\+%");
+		String[] parameters = str[0].split("=\\?|like \\?");
+		String[] values = str[1].split("#%\\$#");
+		List<Integer> setParameterIndex = new ArrayList<Integer>();
+		List<Integer> whereParameterIndex = new ArrayList<Integer>();
+		for (int i = 0; i < parameters.length; i++) {
+			if (parameters[i].indexOf("#s#") != -1) {
+				setParameterIndex.add(i);
+			} else if (parameters[i].indexOf("#w#") != -1) {
+				whereParameterIndex.add(i);
+			} else {
+				System.out.println("参数字符串格式有误！");
+			}
+		}
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try {
+			conn = DBUtil.getConnection();
+			ps = conn.prepareStatement(sql);
+			int index = 1;
+			for (int i = 0; i < setParameterIndex.size(); i++) {
+				ps.setString(index, values[setParameterIndex.get(i)]);
+				index++;
+			}
+			for (int i = 0; i < whereParameterIndex.size(); i++) {
+				ps.setString(index, values[whereParameterIndex.get(i)]);
+				index++;
+			}
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			DBUtil.release();
+		}
+		return true;
+	}
+
+	private Boolean generalUpdate(String ParametersString, String voName,
+			String Operation) {
+		// 构建SQL语句
+		String sql = ConvertString.parseString(path,ParametersString, voName,
+				Operation);
+		String[] str = ParametersString.trim().split("%\\+%");
+		int id_num = 0;
+		String[] parame = str[0].split("=\\?");
+		for (int a = 0; a < parame.length; a++) {
+			if (parame[a].indexOf("id") != -1) {
+				id_num = a;
+				System.out.println("id_num=" + id_num);
+			}
+		}
+		String[] value = str[1].trim().split("#%\\$#");
+		String[] new_value = new String[value.length];
+		int new_index = 0;
+		for (int i = 0; i < id_num; i++) {
+			new_value[new_index] = value[i];
+			new_index++;
+		}
+		for (int i = id_num + 1; i < value.length; i++) {
+			new_value[new_index] = value[i];
+			new_index++;
+		}
+		new_value[value.length - 1] = value[id_num];
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try {
+			conn = DBUtil.getConnection();
+			ps = conn.prepareStatement(sql);
+			for (int i = 0; i < value.length; i++) {
+				ps.setString(i + 1, new_value[i]);
+			}
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			DBUtil.release();
+		}
+		return true;
+	}
+
+	@Override
+	public <T> Boolean delete(String ParametersString, String voName,
+			String Operation) throws DBException {
+		
+		String sql = ConvertString.parseString(path,ParametersString, voName,
+				Operation);
+		String[] str = ParametersString.trim().split("%\\+%");
+		String[] value = str[1].split("#%\\$#");
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try {
+			conn = DBUtil.getConnection();
+			ps = conn.prepareStatement(sql);
+			for (int i = 0; i < value.length; i++) {
+				ps.setString(i + 1, value[i]);
+			}
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			DBUtil.release();
+		}
+		return true;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public <T> List<T> queryBySQL(String sql, Class<T> clazz, int firstIndex,
+			int maxResult) throws DBException {
+		List result = new ArrayList();
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		Field[] fields = clazz.getDeclaredFields();
+		Method[] methods = new Method[fields.length];
+		Object obj = null;
+		int index = 0;
+		try {
+			for (Field f : fields) {
+				PropertyDescriptor pd = null;
+
+				pd = new PropertyDescriptor(f.getName(), clazz);
+
+				methods[index] = pd.getWriteMethod();// 获得写方法;
+				index++;
+			}
+			conn = DBUtil.getConnection();
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				obj = clazz.newInstance();
+				for (int i = 0; i < fields.length; i++) {
+					if ("int".equals(fields[i].getType().toString())) {
+						methods[i].invoke(obj,
+								Integer.parseInt(rs.getString((i + 1))));
+					} else if ("class java.lang.String".equals(fields[i]
+							.getType().toString())) {
+						methods[i].invoke(obj,
+								(rs.getString((i + 1)).toString()));
+					} else if ("class java.util.Date".equals(fields[i]
+							.getType().toString())) {
+						SimpleDateFormat sdf = new SimpleDateFormat(
+								"yyyy-MM-dd");
+						sdf.setLenient(false);
+						Date ddate = sdf
+								.parse(rs.getString((i + 1)).toString());
+						methods[i].invoke(obj, ddate);
+					}
+				}
+				result.add(clazz.cast(obj));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.release();
+		}
+		return result;
+	}
+
+	
+
+	@Override
+	public int queryBySQL(String sql) throws DBException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int result=0;
+		try {
+			conn = DBUtil.getConnection();
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				result=rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.release();
+		}
+		return result;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> List<T> query(String ParametersString, String voName,
+			String Operation, int firstIndex, int maxResult) throws DBException {
+		@SuppressWarnings("rawtypes")
+		List result = new ArrayList();
+		String sql = ConvertString.parseString(path,ParametersString, voName,
+				Operation);
+
+		voClass vo = ParseXML.parsexml(path, voName);
+		String voClassName = vo.getVoname();// vo类名
+		String[] filedNames = ConvertString.getFieldNames(voClassName);
+		String[] str = ParametersString.trim().split("%\\+%");
+		String[] value = str[1].split("#%\\$#");
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		@SuppressWarnings("rawtypes")
+		Class clazz = null;
+		Object obj = null;
+		Field[] fields = null;
+		Method[] methods = null;
+		try {
+			clazz = Class.forName(voClassName);
+			fields = clazz.getDeclaredFields();
+			methods = new Method[fields.length];
+			int index = 0;
+			for (Field f : fields) {
+				PropertyDescriptor pd = new PropertyDescriptor(f.getName(),
+						clazz);
+				methods[index] = pd.getWriteMethod();// 获得写方法;
+				index++;
+			}
+			conn = DBUtil.getConnection();
+			ps = conn.prepareStatement(sql);
+			for (int i = 0; i < value.length; i++) {
+				ps.setString(i + 1, value[i]);
+			}
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				obj = clazz.newInstance();
+				for (int i = 0; i < filedNames.length; i++) {
+					if ("int".equals(fields[i].getType().toString())) {
+						if (rs.getString((i + 1)) != null) {
+							methods[i].invoke(obj,
+									Integer.parseInt(rs.getString((i + 1))));
+						}
+					} else if ("class java.lang.String".equals(fields[i]
+							.getType().toString())) {
+						if (rs.getString((i + 1)) != null) {
+							methods[i].invoke(obj,
+									(rs.getString((i + 1)).toString()));
+						}
+					} else if ("class java.util.Date".equals(fields[i]
+							.getType().toString())) {
+						if (rs.getString((i + 1)) != null) {
+							SimpleDateFormat sdf = new SimpleDateFormat(
+									"yyyy-MM-dd");
+							sdf.setLenient(false);
+							Date ddate = sdf.parse(rs.getString((i + 1))
+									.toString());
+							methods[i].invoke(obj, ddate);
+						}
+					}
+				}
+				result.add(clazz.cast(obj));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.release();
+		}
+		return result;
+	}
+
+	public static void main(String[] args) throws DBException {
+		BaseDAOImpl bd = new BaseDAOImpl();
+		// String parameterString = "参数名1=? 参数名2=? ";//参数名1=? 参数名2=? 参数名3=?
+		// 参数名3=?%+%参数值1_1#%$#参数值2_1#%$#参数值3_1#%$#参数值3_2
+		// "log_id=?log_content=?log_date=?log_reason=?log_who_fk=?%+%2#%$#2#%$#1992-11-13#%$#4#%$#1"
+		// String parameterString = "user_id=?%+%790016293";
+		// String parameterString =
+		// "#w#log_id=?#s#log_content=?#s#log_date=?#s#log_reason=?%+%id:3#%$# 内容：更新测试#%$#1992-11-13#%$#理由：测试";
+		String parameterString = "#s#log_content=?#s#log_date=?#w#log_id=?#s#log_reason=?%+%内容：更新测试#%$#1992-11-13#%$#1#%$# 理由：测试";
+		String voName = "log";
+		// String Operation = "save";
+		// String Operation = "delete";
+		// String Operation = "query";
+		String Operation = "update";
+		// bd.save(parameterString, voName, Operation);
+		bd.update(parameterString, voName, Operation);
+		// bd.delete(parameterString, voName, Operation);
+		// List<User> ceshi = bd.query(parameterString, voName, Operation, 0,
+		// 0);
+		// for (User user : ceshi) {
+		// System.out.println(user.getUser_id());
+		// System.out.println(user.getUser_name());
+		// System.out.println(user.getUser_sex());
+		// }
+
+		// List<User> ceshi
+		// =bd.queryBySQL("select * from t_user where user_id=790016293",
+		// User.class, 0, 0);
+		// for (User user : ceshi) {
+		// System.out.println(user.getUser_id());
+		// System.out.println(user.getUser_name());
+		// System.out.println(user.getUser_sex());
+		// }
+	}
+}

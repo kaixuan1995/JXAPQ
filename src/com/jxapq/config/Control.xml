@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<control>
+	<userLoginView name="userLoginView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/index.jsp" error="/jxapq/jsp/login.jsp" />
+
+	<exitView name="exitView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/index.jsp" error="" />
+
+	<adminLoginView name="adminLoginView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/mSecond.jsp" error="/jxapq/jsp/login.jsp" />
+
+	<registerView name="registerView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/login.jsp" error="/jxapq/jsp/register.jsp" />
+
+	<activeEmailView name="activeEmailView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/login.jsp" error="/jxapq/jsp/login.jsp" />
+
+	<userInfoView name="userInfoView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/user_info/vip_information.jsp" error="/jxapq/jsp/user_info/vip_information.jsp" />
+
+	<alterInfoView name="alterInfoView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/user_info/forQueryUser.jsp" error="" />
+
+	<alterCodeView name="alterCodeView" serviceName="com.jxapq.service.UserService"
+		success="" error="" />
+
+	<queryEmailView name="queryEmailView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/user_info/forQueryUser.jsp" error="/jxapq/jsp/user_info/change_email.jsp" />
+
+	<alterEmailView name="alterEmailView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/user_info/forQueryUser.jsp" error="/jxapq/jsp/user_info/forQueryUser.jsp" />
+		
+    <validateCodeView name="validateCodeView" serviceName="com.jxapq.service.UserService"
+		success="" error="" />
+
+	<queryPasswordView name="queryPasswordView"
+		serviceName="com.jxapq.service.UserService" success="/jxapq/jsp/user_info/forQueryUser.jsp"
+		error="" />
+
+	<forgetpass1View name="forgetpass1View" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/wangjimima02.jsp" error="/jxapq/jsp/wangjimima01.jsp" />
+
+	<forgetpass2View name="forgetpass2View" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/wangjimima03.jsp" error="/jxapq/jsp/wangjimima02.jsp" />
+
+	<forgetpass3View name="forgetpass3View" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/wangjimima03.jsp" error="/jxapq/jsp/wangjimima03.jsp" />
+
+	<queryVipView name="queryVipView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/user_info/search_vip.jsp" error="/jxapq/jsp/user_info/search_vip.jsp" />
+
+	<agreeVipView name="agreeVipView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/user_info/search_vip.jsp" error="/jxapq/jsp/user_info/search_vip.jsp" />
+
+	<addNoticeView name="addNoticeView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/manager/notice_manage.jsp" error="/jxapq/jsp/manager/notice_manage.jsp" />
+
+	<queryNoticeView name="queryNoticeView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/manager/notice_manage.jsp" error="/jxapq/jsp/manager/notice_manage.jsp" />
+
+	<delNoticeView name="delNoticeView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/manager/notice_manage.jsp" error="/jxapq/jsp/manager/notice_manage.jsp" />
+
+	<addWorkerView name="addWorkerView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/manager/worker_manage.jsp" error="/jxapq/jsp/manager/worker_manage.jsp" />
+
+	<queryWorkerView name="queryWorkerView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/manager/worker_manage.jsp" error="/jxapq/jsp/manager/worker_manage.jsp" />
+
+	<queryAllWorkerView name="queryAllWorkerView"
+		serviceName="com.jxapq.service.UserService" success="/jxapq/jsp/manager/worker_manage.jsp"
+		error="/jxapq/jsp/manager/worker_manage.jsp" />
+
+	<delWorkerView name="delWorkerView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/manager/worker_manage.jsp" error="/jxapq/jsp/manager/worker_manage.jsp" />
+
+	<backupDBView name="backupDBView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/manager/backup_recoverDB.jsp" error="/jxapq/jsp/manager/backup_recoverDB.jsp" />
+
+	<recoverView name="recoverView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/manager/backup_recoverDB.jsp" error="/jxapq/jsp/manager/backup_recoverDB.jsp" />
+
+	<uploadSqlFileView name="uploadSqlFileView"
+		serviceName="com.jxapq.service.UserService" success="/jxapq/jsp/manager/backup_recoverDB.jsp"
+		error="/jxapq/jsp/manager/backup_recoverDB.jsp" />
+
+	<checkView name="checkView" serviceName="com.jxapq.service.UserService"
+		success="/jxapq/jsp/manager/backup_recoverDB.jsp" error="" />
+
+
+	
+	<webStatisticsView name="webStatisticsView" serviceName="com.jxapq.service.util.WebStatistics" forward="/user/index.jsp" />
+	<addPaohuquView name="addPaohuquView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_baohuqu.jsp" />
+	<addBiaobenView name="addBiaobenView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_biaoben.jsp" />
+	<addGangView name="addGangView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_gang.jsp" />
+	<addJieView name="addJieView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_jie.jsp" />
+	<addKeView name="addKeView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_ke.jsp" />
+	<addMenView name="addMenView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_men.jsp" />
+	<addMuView name="addMuView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_mu.jsp" />
+	<addQuxileixingView name="addQuxileixingView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_quxileixing.jsp" />
+	<addShuView name="addShuView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_shu.jsp" />
+	<addYagangView name="addYagangView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_yagang.jsp" />
+	<addShujuzidianView name="addShujuzidianView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_shujuzidian.jsp" />
+	<addZiquxileixingView name="addZiquxileixingView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_ziquxileixing.jsp" />
+	<addZhongView name="addZhongView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_zhong.jsp" />
+	<addSpecies_protectionView name="addSpecies_protectionView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_zhong.jsp" />
+	<addSpecies_Yazhong name="addSpecies_Yazhong" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_zhong.jsp" />
+	
+	<addSpecies_synamicView name="addSpecies_synamicView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_zhong.jsp" />
+	<addSpecies_distributeView name="addSpecies_distributeView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_zhong.jsp" />
+	
+	
+	
+	<deletePdynamicsView name="deletePdynamicsView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/ap_data/add_pdynamices.jsp" />
+	<deleteBaohuquView name="deleteBaohuquView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_baohuqu.jsp" />
+	<deleteQuxileixingView name="deleteQuxileixingView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_quxileixing.jsp" />
+	<deleteZiquxileixingView name="deleteZiquxileixingView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_ziquxileixing.jsp" />
+	<deleteShujuzidianView name="deleteShujuzidianView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_shujuzidian.jsp" />
+	<deleteJieView name="deleteJieView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/ap_data/01-jie.jsp" />
+	<deleteMenView name="deleteMenView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/second.jsp" />
+	<deleteGangView name="deleteGangView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/second.jsp" />
+	<deleteYagangView name="deleteYagangView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/second.jsp" />
+	<deleteMuView name="deleteMuView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/second.jsp" />
+	<deleteKeView name="deleteKeView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/second.jsp" />
+	<deleteShuView name="deleteShuView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/second.jsp" />
+	<deleteZhongView name="deleteZhongView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/second.jsp" />
+	<deleteBiaobenView name="deleteBiaobenView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/second.jsp" />
+	
+	
+	
+	
+	<updateShujuzidianView name="updateShujuzidianView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_shujuzidian.jsp" />
+	<updateBiaobenView name="updateBiaobenView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/ap_data/biaoben.jsp" />
+	<updateZiquxileixingView name="updateZiquxileixingView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_ziquxileixing.jsp" />
+	<updateQuxileixingView name="updateQuxileixingView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_quxileixing.jsp" />
+	<updateBaohuquView name="updateBaohuquView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/add_ap/add_baohuqu.jsp" />
+	<updateJieView name="updateJieView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/update_ap/update_jie.jsp" />
+	<updateMenView name="updateMenView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/update_ap/update_men.jsp" />
+	<updateGangView name="updateGangView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/update_ap/update_gang.jsp" />
+	<updateMuView name="updateMuView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/update_ap/update_mu.jsp" />
+	<updateKeView name="updateKeView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/update_ap/update_ke.jsp" />
+	<updateShuView name="updateShuView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/update_ap/update_shu.jsp" />
+	<updateZhongView name="updateZhongView" serviceName="com.jxapq.service.UpdateService" forward="/jxapq/jsp/update_ap/update_zhong.jsp" />
+</control>

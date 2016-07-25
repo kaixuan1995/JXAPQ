@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<voName id="userLoginView">  			<!-- 视图名 -->
+		<query id="4">普通用户登录</query>
+	</voName>
+
+	<voName id="adminLoginView"> 			<!-- 视图名 -->
+		<query id="4">管理员登录</query>
+	</voName>
+
+	<voName id="registerView"> 			<!-- 视图名 -->
+		<save id="1">用户注册</save>
+	</voName>
+
+
+	<voName id="activeEmailView"> 			<!-- 视图名 -->
+		<update id="3">激活邮箱</update>
+
+	</voName>
+
+	<voName id="alterInfoView"> 			<!-- 视图名 -->
+		<update id="3">更新用户信息</update>
+	</voName>
+
+	<voName id="alterCodeView"> 			<!-- 视图名 -->
+		<update id="3">更新激活码</update>
+	</voName>
+
+	<voName id="alterEmailView"> 			<!-- 视图名 -->
+		<update id="3">更新邮箱</update>
+	</voName>
+
+	<voName id="forgetpass3View">  			<!-- 视图名 -->
+		<update id="3">忘记密码</update>
+	</voName>
+
+	<voName id="addNoticeView"> 			<!-- 视图名 -->
+		<save id="1">添加公告</save>
+	</voName>
+
+	<voName id="delNoticeView"> 			<!-- 视图名 -->
+		<delete id="2">删除公告</delete>
+	</voName>
+
+	<voName id="agreeVipView"> 			<!-- 视图名 -->
+		<update id="3">审批vip用户</update>
+	</voName>
+
+	<voName id="addWorkerView"> 			<!-- 视图名 -->
+		<save id="1">增加工作人员</save>
+	</voName>
+
+	<voName id="delWorkerView"> 			<!-- 视图名 -->
+		<delete id="2">删除工作人员</delete>
+	</voName>
+
+	<voName id="log"> 						<!-- 视图名 -->
+		<save id="1">添加日志</save>
+	</voName>
+
+	<voName id="addPaohuquView"> 						<!-- 视图名 -->
+		<save id="1">增加保护区</save>
+	</voName>
+
+	<voName id="addSpecies_protectionView"> 			<!-- 视图名 -->
+		<save id="1">完善保护区</save>
+	</voName>
+	
+	<voName id="addSpecies_synamicView"> 			<!-- 视图名 -->
+		<save id="1">完善种群动态</save>
+	</voName>
+
+	<voName id="addSpecies_distributeView"> 			<!-- 视图名 -->
+		<save id="1">完善省内分布</save>
+	</voName>
+	
+	<voName id="addSpecies_PicView"> 			<!-- 视图名 -->
+		<save id="1">完善物种图片</save>
+	</voName>
+	
+	<voName id="addBiaobenView"> 						<!-- 视图名 -->
+		<save id="1">增加标本</save>
+	</voName>
+
+	<voName id="addJieView"> 						<!-- 视图名 -->
+		<save id="1">增加界</save>
+	</voName>
+
+	<voName id="addMenView"> 						<!-- 视图名 -->
+		<save id="1">增加门</save>
+	</voName>
+
+	<voName id="addGangView"> 						<!-- 视图名 -->
+		<save id="1">增加纲</save>
+	</voName>
+
+	<voName id="addYagangView"> 						<!-- 视图名 -->
+		<save id="1">增加亚纲</save>
+	</voName>
+
+	<voName id="addMuView"> 						<!-- 视图名 -->
+		<save id="1">增加目</save>
+	</voName>
+
+	<voName id="addKeView"> 						<!-- 视图名 -->
+		<save id="1">增加科</save>
+	</voName>
+
+	<voName id="addShuView"> 						<!-- 视图名 -->
+		<save id="1">增加属</save>
+	</voName>
+
+	<voName id="addZhongView"> 						<!-- 视图名 -->
+		<save id="1">增加种</save>
+	</voName>
+
+	<voName id="addQuxileixingView"> 						<!-- 视图名 -->
+		<save id="1">增加区系类型</save>
+	</voName>
+
+	<voName id="addShujuzidianView"> 						<!-- 视图名 -->
+		<save id="1">增加数据字典</save>
+	</voName>
+
+	<voName id="addZiquxileixingView"> 						<!-- 视图名 -->
+		<save id="1">增加子区系类型</save>
+	</voName>
+
+	<voName id="queryEmailView">
+		<update id="3">更新用户邮箱</update>					<!-- 视图名 -->
+		<query id="4">查询用户邮箱</query>
+	</voName>
+
+	<voName id="queryPasswordView"> 						<!-- 视图名 -->
+		<update id="3">修改用户密码</update>
+		<query id="4">查询用户密码</query>
+	</voName>
+
+	<voName id="class"> 						<!-- 视图名 -->
+		<save id="1"></save>
+		<delete id="2"></delete>
+		<update id="3"></update>
+		<query id="4"></query>
+	</voName>
+
+	<voName id="order"> 						<!-- 视图名 -->
+		<save id="1"></save>
+		<delete id="2"></delete>
+		<update id="3"></update>
+		<query id="4"></query>
+	</voName>
+
+	<voName id="family"> 						<!-- 视图名 -->
+		<save id="1"></save>
+		<delete id="2"></delete>
+		<update id="3"></update>
+		<query id="4"></query>
+	</voName>
+
+	<voName id="fucus"> 						<!-- 视图名 -->
+		<save id="1"></save>
+		<delete id="2"></delete>
+		<update id="3"></update>
+		<query id="4"></query>
+	</voName>
+
+	<voName id="species"> 						<!-- 视图名 -->
+		<save id="1"></save>
+		<delete id="2"></delete>
+		<update id="3"></update>
+		<query id="4"></query>
+	</voName>
+
+	<voName id="treekingdom"> 						<!-- 视图名 -->
+		<save id="1"></save>
+		<delete id="2"></delete>
+		<update id="3"></update>
+		<query id="4"></query>
+	</voName>
+
+	<voName id="treephylum"> 						<!-- 视图名 -->
+		<save id="1"></save>
+		<delete id="2"></delete>
+		<update id="3"></update>
+		<query id="4"></query>
+	</voName>
+
+	<voName id="treeclass"> 						<!-- 视图名 -->
+		<save id="1"></save>
+		<delete id="2"></delete>
+		<update id="3"></update>
+		<query id="4"></query>
+	</voName>
+
+	<voName id="treeclass2"> 						<!-- 视图名 -->
+		<save id="1"></save>
+		<delete id="2"></delete>
+		<update id="3"></update>
+		<query id="4"></query>
+	</voName>
+
+	<voName id="treesubclass"> 						<!-- 视图名 -->
+		<save id="1"></save>
+		<delete id="2"></delete>
+		<update id="3"></update>
+		<query id="4"></query>
+	</voName>
+
+	<voName id="treeorder"> 						<!-- 视图名 -->
+		<save id="1"></save>
+		<delete id="2"></delete>
+		<update id="3"></update>
+		<query id="4"></query>
+	</voName>
+
+	<voName id="treefamily"> 						<!-- 视图名 -->
+		<save id="1"></save>
+		<delete id="2"></delete>
+		<update id="3"></update>
+		<query id="4"></query>
+	</voName>
+
+	<voName id="treefucus"> 						<!-- 视图名 -->
+		<save id="1"></save>
+		<delete id="2"></delete>
+		<update id="3"></update>
+		<query id="4"></query>
+	</voName>
+
+
+</root>

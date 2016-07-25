@@ -1,0 +1,134 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>江西省动植物信息检索系统</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/jxapq/scripts/jquery/jquery-1.7.1.js"></script>
+<link href="${pageContext.request.contextPath}/jxapq/style/authority/basic_layout.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/jxapq/style/authority/common_style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/jxapq/scripts/authority/commonAll.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jxapq/scripts/jquery/jquery-1.4.4.min.js"></script>
+<script src="${pageContext.request.contextPath}/jxapq/scripts/My97DatePicker/WdatePicker.js" type="text/javascript" defer></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jxapq/scripts/artDialog/artDialog.js?skin=default"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		/*
+		 * 提交
+		 */
+		$("#submitbutton").click(function() {
+			if(validateForm()){
+				checkFyFhSubmit();
+			}
+		});
+		
+		/*
+		 * 取消
+		 */
+		$("#cancelbutton").click(function() {
+			/**  关闭弹出iframe  **/
+			window.parent.$.fancybox.close();
+		});
+		
+		var result = 'null';
+		if(result =='success'){
+			/**  关闭弹出iframe  **/
+			window.parent.$.fancybox.close();
+		}
+	});
+	
+</script>
+</head>
+<style type="text/css">
+    tr:hover{ background-color:#A9C3DD}
+</style>
+<body>
+<input type="hidden" name="fyID" value="14458625716623" id="fyID"/>
+<div id="container">
+  <div id="nav_links"> 当前位置：动植物数据管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">新增图片</span>
+    <div id="page_close"> <a href="javascript:parent.$.fancybox.close();"> <img src="${pageContext.request.contextPath}/jxapq/images/common/page_close.png" width="20" height="20" style="vertical-align: text-top;"/> </a> </div>
+  </div>
+  
+  
+  <p>
+  <div id="box_top">批量导入图片</div>
+  </p>
+  <div class="ui_content">
+    <form id="" name="" action="" method="post">
+      <table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
+		<tr>
+          <td height="37" class="ui_text_rt" >图片文件：</td>
+          <td class="ui_text_lt"  ><input type="file" id="" name=""  value=""   onKeyUp="checkFyFh();"/></td>
+        </tr>
+		   <tr>
+          <td height="40">&nbsp;</td>
+          <td class="ui_text_lt">
+            <input id="submitbutton" type="button" value="提交" class="ui_input_btn01"/>
+            &nbsp;
+            <input id="cancelbutton" type="button" value="取消" class="ui_input_btn01"/>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+	
+  
+  <p>
+  <div id="box_top">新增图片</div>
+  </p>
+  <div class="ui_content">
+    <form id="submitForm" name="submitForm" action="/xngzf/archives/initFangyuan.action" method="post">
+	
+      <table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
+        <tr>
+          <td class="ui_text_rt">所属分类：</td>
+          <td height="42" colspan="2"><select name="kingdom_id =" class="ui_select01">
+              <option>动物界</option>
+              <option>植物界</option>
+            </select>
+            <select name="phylum_id =" class="ui_select01">
+              <option selected="selected">请选择所属门</option>
+              <option>脊索动物门</option>
+              <option>苔藓门</option>
+            </select>
+            <select name="class_id =" class="ui_select01">
+              <option>纲</option>
+            </select>
+            <select name="order_id =" class="ui_select01">
+              <option>目</option>
+            </select>
+			 <select name="family_id =" class="ui_select01">
+            <option>科</option>
+          </select>
+		   <select name="fucus_id =" class="ui_select01">
+            <option>属</option>
+          </select>
+		  <select name="fucus_id =" class="ui_select01">
+            <option>种</option>
+          </select>
+          </td>
+        </tr>
+		
+         <tr>
+          <td class="ui_text_rt">图片：</td>
+          <td class="ui_text_lt"><input type="file" id="" name=""  value=""   onKeyUp="checkFyFh();"/></td>
+        </tr>
+      
+        <tr>
+          <td>&nbsp;</td>
+          <td class="ui_text_lt">&nbsp;
+            <input id="submitbutton" type="button" value="提交" class="ui_input_btn01"/>
+            &nbsp;
+            <input id="cancelbutton" type="button" value="取消" class="ui_input_btn01"/>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+<div style="display:none">
+  <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+</div>
+</body>
+</html>

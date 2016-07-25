@@ -1,0 +1,216 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/jxapq/scripts/jquery/jquery-1.7.1.js"></script>
+<link href="${pageContext.request.contextPath}/jxapq/style/authority/basic_layout.css" rel="stylesheet"
+	type="text/css">
+<link href="${pageContext.request.contextPath}/jxapq/style/authority/common_style.css" rel="stylesheet"
+	type="text/css">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/jxapq/scripts/authority/commonAll.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/jxapq/scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/jxapq/scripts/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/jxapq/style/authority/jquery.fancybox-1.3.4.css" media="screen">
+</link>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/jxapq/scripts/artDialog/artDialog.js?skin=default"></script>
+<title>江西省动植物信息检索系统</title>
+<style>
+.alt td {
+	background: black !important;
+}
+</style>
+</head>
+<body>
+	<div style="display:none">
+		<script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540'
+			language='JavaScript' charset='gb2312'></script>
+	</div>
+</body>
+</html>
+<style>
+#main {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	width: 600px;
+	height: 1000px;
+	z-index: 2;
+	overflow: hidden;
+	margin-left: 10px;
+}
+</style>
+<script language="javascript">
+	function rethtml() {
+		var $html = "<div class='in'  align='center'> <select name='searcheName' onchange='xianshi(this)' class='ui_select01'><option value='中文名'>中文名</option><option value='学名'>学名</option><option value='异名'>异名</option><option value='俗名'>俗名</option><option value='命名人'>命名人</option><option value='地理分布型'>地理分布型</option><option value='国家保护级别'>国家保护级别</option><option value='IUCN红色名录等级'>IUCN红色名录等级</option><option value='省保护'>省保护</option><option value='中国红色名录等级'>中国红色名录等级</option><option value='CITES保护等级'>CITES保护等级</option><option value='区系类型'>区系类型</option><option value='居留型'>居留型</option><option value='生活型'>生活型</option><option value='省内分布'>省内分布</option><option value='中国特有'>中国特有</option><option value='三有保护'>三有保护</option><option value='引种栽培'>引种栽培</option><option value='饲养状况'>饲养状况</option></select>&nbsp;&nbsp;&nbsp;<span id='add'><input type='text'  class='ui_input_txt02'/></span></div>";
+		return $html;
+
+	}
+
+	function retradio() {
+		var $retradio = "<span id='add'><input type='radio' value='是' />是 <input type='radio' value='否' />否</span>";
+		return $retradio;
+
+	}
+
+	function rettext() {
+		var $rettext = "<span id='add'><input type='text'  class='ui_input_txt02' /></span>";
+		return $rettext;
+
+	}
+
+	function retselect() {
+		var $retselect = "<span id='add'><select class='ui_select01'><option>------</option></select></span>";
+		return $retselect;
+
+	}
+
+	function show() {
+		$(".up").append(rethtml);
+	}
+
+	function xianshi(obj) {
+
+		var arr1 = [ "中国特有", "三有保护", "引种栽培", "饲养状况" ];
+		var arr2 = [ "中文名", "命名人", "学名", "异名", "俗名" ];
+
+		var arr3 = [ "地理分布型", "国家保护级别", "IUCN红色名录等级", "省保护", "中国红色名录等级",
+				"CITES保护等级", "区系类型", "居留型", "生活型", "省内分布" ];
+
+		var index = obj.selectedIndex; // 选中索引
+
+		var text = obj.options[index].text; // 选中文本
+
+		var value = obj.options[index].value; // 选中值
+
+		var i;
+
+		for (i = 0; i < arr1.length; i++) {
+
+			if (arr1[i] == text) {
+				addradio(obj.parentNode);
+			}
+		}
+
+		for (i = 0; i < arr2.length; i++) {
+
+			if (arr2[i] == text) {
+				addtext(obj.parentNode);
+			}
+		}
+
+		for (i = 0; i < arr3.length; i++) {
+			if (arr3[i] == text) {
+				addselect(obj.parentNode);
+			}
+		}
+
+	}
+
+	function addradio(parent) {
+
+		parent.removeChild(parent.lastChild);
+
+		$(parent).append(retradio());
+
+	}
+	function addtext(parent) {
+		parent.removeChild(parent.lastChild);
+		$(parent).append(rettext());
+	}
+	function addselect(parent) {
+
+		parent.removeChild(parent.lastChild);
+		$(parent).append(retselect());
+	}
+
+	function delete1() {
+		var up = document.getElementById("up");
+		//alert(up);
+		up.removeChild(up.lastChild);
+	}
+</script>
+</head>
+<body>
+	<div id="box_top">
+		<h3>高级搜索</h3>
+	</div>
+	<table>
+		<form name="gaojijiansuo" action="gaojijiansuo-result.html"
+			target="right" method="post">
+			<div align="center">
+				<div style="margin-bottom:20px;">
+					<select name="species_id =" class="ui_select01">
+						<option>动物界</option>
+						<option>植物界</option>
+					</select> <select name="phylum_id =" class="ui_select01">
+						<option>脊索动物门</option>
+						<option>被子植物门</option>
+					</select> <select name="class_id =" class="ui_select01">
+						<option>鸟纲</option>
+					</select> <select class="ui_select01">
+						<option>亚纲</option>
+					</select> <select name="order_id =" class="ui_select01">
+						<option>目</option>
+					</select> <select name="family_id =" class="ui_select01">
+						<option>科</option>
+					</select> <select name="fucus_id =" class="ui_select01">
+						<option>属</option>
+					</select>
+				</div>
+				<div>
+					<input type="button" onClick="show()" value="增加搜索"
+						class="ui_input_btn01" /> <input type="button"
+						onClick="delete1()" value="删除搜索" class="ui_input_btn01" />
+				</div>
+				<div class="up" id="up">
+					<div class="in">
+						<select name="searcheName" onChange="xianshi(this)"
+							class="ui_select01">
+							<option value="中文名">中文名</option>
+							<option value="学名">学名</option>
+							<option value="异名">异名</option>
+							<option value="俗名">俗名</option>
+							<option value="命名人">命名人</option>
+							<option value="地理分布型">地理分布型</option>
+							<option value="国家保护级别">国家保护级别</option>
+							<option value="IUCN红色名录等级">IUCN红色名录等级</option>
+							<option value="省保护">省保护</option>
+							<option value="中国红色名录等级">中国红色名录等级</option>
+							<option value="CITES保护等级">CITES保护等级</option>
+							<option value="区系类型">区系类型</option>
+							<option value="居留型">居留型</option>
+							<option value="生活型">生活型</option>
+							<option value="省内分布">省内分布</option>
+							<option value="中国特有">中国特有</option>
+							<option value="三有保护">三有保护</option>
+							<option value="引种栽培">引种栽培</option>
+							<option value="饲养状况">饲养状况</option>
+						</select> &nbsp;&nbsp;&nbsp; <span id="add" name="span1"> <input
+							type="text" class="ui_input_txt02" /> </span>
+					</div>
+				</div>
+				<input type="submit" value="确认搜索" class="ui_input_btn01" />
+		</form>
+		<div style="margin-top:20px;">
+			<a href="#">导出</a>
+		</div>
+	</table>
+	</div>
+</body>
+</html>

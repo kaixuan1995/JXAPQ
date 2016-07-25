@@ -1,0 +1,58 @@
+package com.jxapq.service;
+
+import com.jxapq.dao.impl.BaseDAOImpl;
+import com.jxapq.exception.DBException;
+
+
+public class UpdateService{
+	BaseDAOImpl base = new BaseDAOImpl();
+	public boolean action(String voName, String params, String method) throws DBException {
+		if("修改".equals(method)) {
+			return update(voName,params);
+		}else if("删除".equals(method)) {
+			return delete(voName,params);
+		}else if("add".equals(method)) {
+			return add(voName,params);
+		}else {
+			throw new DBException("没有该操作类型");
+		}
+			
+	}
+
+	/**
+	 * 用户数据的添加
+	 * @param voName
+	 * @param params
+	 * @return
+	 * @throws DBException 
+	 */
+	private boolean add(String voName, String params) throws DBException {
+		return base.save(params, voName, "save");
+		
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * 用户数据的删除
+	 * @param voName
+	 * @param params
+	 * @return
+	 */
+	private boolean delete(String voName, String params) {
+		return false;
+		
+	}
+
+	/**
+	 * 用于数据的修改
+	 * @param voName
+	 * @param params
+	 * @return
+	 */
+	private boolean update(String voName, String params) {
+		return false;
+		// TODO Auto-generated method stub
+		
+	}
+}

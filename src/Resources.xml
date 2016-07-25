@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<type>
+		<table_Name>t_picture</table_Name>
+		<name>图片个数</name>
+		<sum>10</sum>
+	</type>
+	<type>
+		<table_Name>t_sample</table_Name>
+		<name>标本个数</name>
+		<sum>9</sum>
+	</type>
+	<type>
+		<table_Name>t_species</table_Name>
+		<name>物种个数</name>
+		<sum>7</sum>
+	</type>
+	<type>
+		<table_Name>t_user</table_Name>
+		<name>用户数量</name>
+		<sum>6</sum>
+	</type>
+</resources>

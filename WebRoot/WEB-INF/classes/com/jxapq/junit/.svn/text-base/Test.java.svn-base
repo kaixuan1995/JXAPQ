@@ -1,0 +1,28 @@
+package com.jxapq.junit;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.jxapq.exception.UtilException;
+import com.jxapq.service.util.OutputUtil;
+import com.jxapq.vo.CountSpecies;
+
+public class Test {
+	public static void main(String[] args) throws UtilException {
+		List<CountSpecies> list = new ArrayList<CountSpecies>();
+		CountSpecies[] co = new CountSpecies[100];
+		for(int i = 0;i<100;i++) {
+			co[i] = new CountSpecies();
+			co[i].setFamily_sname("种"+i);
+			if(i%2==0) {
+				co[i].setFucus_sname("属"+i);
+			}
+			co[i].setOrder_sname("目"+i);
+			co[i].setSpecies_cname("种学名"+i);
+			co[i].setSpecies_id(i+"");
+			co[i].setFamily_sname("科学名"+i);
+			list.add(co[i]);
+		}
+		OutputUtil.outputStatic(list, "CountSpecies","");
+	}
+}

@@ -1,0 +1,151 @@
+package com.jxapq.servlet;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.jfree.chart.servlet.ServletUtilities;
+
+import com.jxapq.dao.BaseDao;
+import com.jxapq.dao.impl.BaseDAOImpl;
+import com.jxapq.exception.DBException;
+import com.jxapq.exception.UtilException;
+import com.jxapq.service.util.CreatePic;
+import com.jxapq.service.util.OutputUtil;
+import com.jxapq.service.util.Reflex;
+import com.jxapq.service.util.WebStatistics;
+import com.jxapq.servlet.util.LinkStringTool;
+import com.jxapq.vo.Count;
+import com.jxapq.vo.CountSpecies;
+
+public class UtilServlet extends HttpServlet {
+
+	public void service(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		String methodName = req.getParameter("method");				//获取方法名
+		String parame = LinkStringTool.connectStr(req);				//参数拼接
+		String voName = req.getParameter("voName");					//获取试图名
+		if(methodName == null || methodName.trim().isEmpty()) {
+			throw new RuntimeException("没有传递操作方法");
+		}
+		Class c = this.getClass();
+		Method method = null;
+		try {
+			method = c.getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class, String.class, String.class);
+		} catch (Exception e) {
+			throw new RuntimeException("没有该方法");
+		}
+		try{
+			String result = (String) method.invoke(this, req, resp, parame, voName);
+			/*
+			 * 返回值为空时，不做任何操作。
+			 */
+			if(result == null || result.trim().isEmpty()) {
+				return ;
+			}
+			
+			/*查看返回字符串是否包含冒号，没有表示转发。
+			 * 如果有，切割前后字符串。
+			 * 前缀如果是f，表示转发，如果是r表示重定向，后缀表示路径
+			 */
+			if(result.contains(":")) {
+				int index = result.indexOf(":");  //冒号位置
+				String qian = result.substring(0, index);
+				String path = result.substring(index+1);
+				if(qian.equalsIgnoreCase("f")) {
+					req.getRequestDispatcher(path).forward(req, resp);
+				} else if(qian.equalsIgnoreCase("r")) {
+					resp.sendRedirect(req.getContextPath()+path);
+				} else {
+					throw new RuntimeException("暂不支持该操作");
+				}
+			} else {
+				req.getRequestDispatcher(result).forward(req, resp);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//动态资源
+	public String dynamicResource(HttpServletRequest req, HttpServletResponse resp) 
+			throws ServletException, IOException {
+		try {
+			List list =  WebStatistics.getStatisticsInfor();
+		} catch (UtilException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	//数据统计：
+	public String statistics(HttpServletRequest req, HttpServletResponse resp, String parame, String voName) 
+			throws ServletException, IOException {
+		//调用dao层得到统计信息,放回一个List<CountSpecies>
+		//调用Reflex里面的getStatisInfo方法，得到统计的的数目，返回List<Count>
+		//调用CreatePic里面的getPieUrl方法，得到图片的地址List<String>
+		//将这三个List集合用request返回到界面上去
+		List<CountSpecies> list = null;
+		try {
+			list = new BaseDAOImpl().query(parame, voName, "query", 0, 0);
+		} catch (DBException e) {
+			e.printStackTrace();
+		}
+		List<Count> listCount = null;
+		try {
+			listCount = Reflex.getStatisInfo(list);
+		} catch (UtilException e) {
+			e.printStackTrace();
+		}
+		String charPic = null;
+		try {
+			charPic = ServletUtilities.saveChartAsJPEG(new CreatePic().createChart(list), 300, 450, req.getSession());
+		} catch (UtilException e) {
+			e.printStackTrace();
+		}
+		String pinPic = null;
+		try {
+			pinPic = ServletUtilities.saveChartAsJPEG(new CreatePic().createPie(list), 300, 450, req.getSession());
+		} catch (UtilException e) {
+			e.printStackTrace();
+		}
+		
+		return "f:index.jsp";
+	}
+	
+	//导出数据：
+	public String exportData(HttpServletRequest req, HttpServletResponse resp, String parame, String voName) 
+				throws IOException, ServletException {
+		BaseDao baseDao = new BaseDAOImpl();
+		List<Object> list = null;
+		try {
+			list = baseDao.query(parame, voName, "query", 0, 0);
+		} catch (DBException e1) {
+			req.setAttribute("message", "查询失败");
+			req.getRequestDispatcher("/jsp/message.jsp").forward(req, resp);	
+		}
+		try {
+			String outputFile = OutputUtil.output(list, "CountSpecies", req.getServletContext().getRealPath(""));
+		} catch (UtilException e) {
+			e.printStackTrace();
+		}
+		//下载
+		return null;
+	}
+	
+	//导入数据
+	public String importData(HttpServletRequest  req, HttpServletResponse resp) {
+		return null;
+	}
+
+	//上传图片
+	public String uploadPictures(HttpServletRequest req, HttpServletResponse resp) {
+		return null;
+	}
+}
+	

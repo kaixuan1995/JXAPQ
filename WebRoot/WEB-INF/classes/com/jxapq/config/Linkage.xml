@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<control id="PurchaseManage_">  			<!-- 视图名 -->
+		<controlName>PurchaseManageControl</controlName> 	<!--控制器名称 -->
+		<controlMethod>ProducePurchaseDocket</controlMethod> 	<!-- 控制器中的方法名 -->
+
+	</control>
+
+	<Linkage id="Linkage">  			<!-- 视图名 -->
+		<tableName>t_kingdom</tableName> 	<!-- 视图对应物理表名 -->
+		<id>kingdom_id</id> 	<!-- 视图对应物理表名 -->
+		<name>kingdom_cname</name> 	<!-- 物理表连接条件 -->
+	</Linkage>
+
+	<Linkage id="searchMen">  						<!-- 视图名 -->
+		<tableName>t_phylum</tableName> 			<!-- 视图对应物理表名 -->
+		<id>phylum_id</id> 							<!-- 要查询的字段名 -->
+		<name>phylum_cname</name> 					<!-- 要查询的字段名 -->
+		<condition>kingdom_id_fk</condition> 		<!-- 要查询的字段名 -->
+	</Linkage>
+
+
+	<Linkage id="searchCountry">  						<!-- 视图名 -->
+		<tableName>t_country</tableName> 			<!-- 视图对应物理表名 -->
+		<id>country_id</id> 							<!-- 要查询的字段名 -->
+		<name>country_name</name> 					<!-- 要查询的字段名 -->
+		<condition>town_id_fk</condition> 		<!-- 要查询的字段名 -->
+	</Linkage>
+
+
+	<Linkage id="searchGang">  						<!-- 视图名 -->
+		<tableName>t_class</tableName> 			<!-- 视图对应物理表名 -->
+		<id>class_id</id> 							<!-- 要查询的字段名 -->
+		<name>class_cname</name> 					<!-- 要查询的字段名 -->
+		<condition>phylum_id_fk</condition> 		<!-- 要查询的字段名 -->
+	</Linkage>
+
+
+	<Linkage id="searchMu">  						<!-- 视图名 -->
+		<tableName>t_order</tableName> 			<!-- 视图对应物理表名 -->
+		<id>order_id</id> 							<!-- 要查询的字段名 -->
+		<name>order_cname</name> 					<!-- 要查询的字段名 -->
+		<condition>class_id_fk</condition> 		<!-- 要查询的字段名 -->
+	</Linkage>
+
+	<Linkage id="searchKe">  						<!-- 视图名 -->
+		<tableName>t_family</tableName> 			<!-- 视图对应物理表名 -->
+		<id>family_id</id> 							<!-- 要查询的字段名 -->
+		<name>family_cname</name> 					<!-- 要查询的字段名 -->
+		<condition>order_id_fk</condition> 		<!-- 要查询的字段名 -->
+	</Linkage>
+
+
+	<Linkage id="searchShu">  						<!-- 视图名 -->
+		<tableName>t_fucus</tableName> 			<!-- 视图对应物理表名 -->
+		<id>fucus_id</id> 							<!-- 要查询的字段名 -->
+		<name>fucus_cname</name> 					<!-- 要查询的字段名 -->
+		<condition>family_id_fk</condition> 		<!-- 要查询的字段名 -->
+	</Linkage>
+
+	<Linkage id="searchZhong">  						<!-- 视图名 -->
+		<tableName>t_species</tableName> 			<!-- 视图对应物理表名 -->
+		<id>species_id</id> 							<!-- 要查询的字段名 -->
+		<name>species_cname</name> 					<!-- 要查询的字段名 -->
+		<condition>fucus_id_fk</condition> 		<!-- 要查询的字段名 -->
+	</Linkage>
+
+
+	<Linkage id="searchSubreginal">  						<!-- 视图名 -->
+		<tableName>t_subreginal</tableName> 			<!-- 视图对应物理表名 -->
+		<id>subreginal_id</id> 							<!-- 要查询的字段名 -->
+		<name>subreginal_name</name> 					<!-- 要查询的字段名 -->
+		<condition>reginal_id_fk</condition> 		<!-- 要查询的字段名 -->
+	</Linkage>
+
+
+	<Linkage id="getBaohuquInfor">  						<!-- 视图名 -->
+		<tableName>t_protection</tableName> 			<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.Protection</voName> 							<!-- 要查询对应的视图类 -->
+		<forward>/jxapq/jsp/add_ap/add_baohuqu.jsp</forward> 				<!-- 要跳转的页面 -->
+	</Linkage>
+
+
+	<Linkage id="getQuxileixing">  						<!-- 视图名 -->
+		<tableName>t_reginal</tableName> 						<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.ReginalType</voName> 							<!-- 要查询对应的视图类 -->
+		<forward>/jxapq/jsp/add_ap/add_quxileixing.jsp</forward> 				<!-- 要跳转的页面 -->
+	</Linkage>
+
+
+	<Linkage id="getZiquxileixingInfor">  						<!-- 视图名 -->
+		<tableName>t_subreginal</tableName> 						<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.SubreginalType</voName> 							<!-- 要查询对应的视图类 -->
+		<!-- <condition>subreginal_id</condition> -->
+		<forward>/jxapq/jsp/add_ap/add_ziquxileixing.jsp</forward> 				<!-- 要跳转的页面 -->
+	</Linkage>
+
+
+	<Linkage id="getShujuzidianInfor">  						<!-- 视图名 -->
+		<tableName>t_dictionary</tableName> 						<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.Dictionary</voName> 							<!-- 要查询对应的视图类 -->
+		<forward>/jxapq/jsp/add_ap/add_shujuzidian.jsp</forward> 				<!-- 要跳转的页面 -->
+	</Linkage>
+
+
+	<Linkage id="queryShujuzidianSelf">  						<!-- 视图名 -->
+		<tableName>t_dictionary</tableName> 						<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.Dictionary</voName> 							<!-- 要查询对应的视图类 -->
+		<forward>/jxapq/jsp/update_ap/update_shujuzidian.jsp</forward> 				<!-- 要跳转的页面 -->
+		<condition>dictionary_id</condition> 				<!-- 要跳转的页面 -->
+	</Linkage>
+
+	<Linkage id="queryZiquxileixingSelf">  						<!-- 视图名 -->
+		<tableName>t_subreginal</tableName> 						<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.SubreginalType</voName> 							<!-- 要查询对应的视图类 -->
+		<forward>/jxapq/jsp/update_ap/update_ziquxileixing.jsp</forward> 				<!-- 要跳转的页面 -->
+		<condition>subreginal_id</condition> 				<!-- 要跳转的页面 -->
+	</Linkage>
+
+
+	<Linkage id="queryQuxileixingSelf">  						<!-- 视图名 -->
+		<tableName>t_reginal</tableName> 						<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.ReginalType</voName> 							<!-- 要查询对应的视图类 -->
+		<forward>/jxapq/jsp/update_ap/update_quxileixing.jsp</forward> 				<!-- 要跳转的页面 -->
+		<condition>reginal_id</condition> 				<!-- 要跳转的页面 -->
+	</Linkage>
+	<Linkage id="queryBaohuquSelf">  						<!-- 视图名 -->
+		<tableName>t_protection</tableName> 						<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.Protection</voName> 							<!-- 要查询对应的视图类 -->
+		<forward>/jxapq/jsp/update_ap/update_baohuqu.jsp</forward> 				<!-- 要跳转的页面 -->
+		<condition>protection_id</condition> 				<!-- 要跳转的页面 -->
+	</Linkage>
+	<Linkage id="queryBiaobenSelf">  						<!-- 视图名 -->
+		<tableName>t_sample</tableName> 						<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.Sample</voName> 							<!-- 要查询对应的视图类 -->
+		<forward>/jxapq/jsp/update_ap/update_biaoben.jsp</forward> 				<!-- 要跳转的页面 -->
+		<condition>sample_id</condition> 				<!-- 要跳转的页面 -->
+	</Linkage>
+
+	<Linkage id="queryJieSelf">  						<!-- 视图名 -->
+		<tableName>t_kingdom</tableName> 						<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.Kingdom</voName> 							<!-- 要查询对应的视图类 -->
+		<forward>/jxapq/jsp/update_ap/update_jie.jsp</forward> 				<!-- 要跳转的页面 -->
+		<condition>kingdom_id</condition> 				<!-- 要查询的属性 -->
+	</Linkage>
+	<Linkage id="queryMenSelf">  						<!-- 视图名 -->
+		<tableName>t_Phylum</tableName> 						<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.Phylum</voName> 							<!-- 要查询对应的视图类 -->
+		<forward>/jxapq/jsp/update_ap/update_men.jsp</forward> 				<!-- 要跳转的页面 -->
+		<condition>phylum_id</condition> 				<!-- 要查询的属性 -->
+	</Linkage>
+	<Linkage id="queryGangSelf">  						<!-- 视图名 -->
+		<tableName>t_class</tableName> 						<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.Clazz</voName> 							<!-- 要查询对应的视图类 -->
+		<forward>/jxapq/jsp/update_ap/update_gang.jsp</forward> 				<!-- 要跳转的页面 -->
+		<condition>class_id</condition> 				<!-- 要查询的属性 -->
+	</Linkage>
+	<Linkage id="queryMuSelf">  						<!-- 视图名 -->
+		<tableName>t_order</tableName> 						<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.Order</voName> 							<!-- 要查询对应的视图类 -->
+		<forward>/jxapq/jsp/update_ap/update_mu.jsp</forward> 				<!-- 要跳转的页面 -->
+		<condition>order_id</condition> 				<!-- 要查询的属性 -->
+	</Linkage>
+	<Linkage id="queryKeSelf">  						<!-- 视图名 -->
+		<tableName>t_family</tableName> 						<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.Family</voName> 							<!-- 要查询对应的视图类 -->
+		<forward>/jxapq/jsp/update_ap/update_ke.jsp</forward> 				<!-- 要跳转的页面 -->
+		<condition>family_id</condition> 				<!-- 要查询的属性 -->
+	</Linkage>
+	<Linkage id="queryShuSelf">  						<!-- 视图名 -->
+		<tableName>t_fucus</tableName> 						<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.Fucus</voName> 							<!-- 要查询对应的视图类 -->
+		<forward>/jxapq/jsp/update_ap/update_shu.jsp</forward> 				<!-- 要跳转的页面 -->
+		<condition>fucus_id</condition> 				<!-- 要查询的属性 -->
+	</Linkage>
+	<Linkage id="queryZhongSelf">  						<!-- 视图名 -->
+		<tableName>t_species</tableName> 						<!-- 视图对应物理表名 -->
+		<voName>com.jxapq.vo.Species</voName> 							<!-- 要查询对应的视图类 -->
+		<forward>/jxapq/jsp/update_ap/update_zhong.jsp</forward> 				<!-- 要跳转的页面 -->
+		<condition>species_id</condition> 				<!-- 要查询的属性 -->
+	</Linkage>
+
+
+</root>

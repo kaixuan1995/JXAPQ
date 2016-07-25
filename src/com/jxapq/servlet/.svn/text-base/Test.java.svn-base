@@ -1,0 +1,17 @@
+package com.jxapq.servlet;
+
+import java.util.List;
+
+import com.jxapq.exception.DBException;
+import com.jxapq.service.UserService;
+import com.jxapq.vo.User;
+
+public class Test {
+	public static void main(String[] args) throws Exception, DBException {
+		UserService userservice = new UserService();
+		@SuppressWarnings("unchecked")
+		List<User> list = userservice.action("login",
+				"user_name =?user_password =?%+%zhumode#%$#123", "login");
+		System.out.println(list.get(0).getUser_name()+list.get(0).getUser_id());
+	}
+}

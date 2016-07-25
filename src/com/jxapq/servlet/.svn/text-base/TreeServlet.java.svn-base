@@ -1,0 +1,59 @@
+package com.jxapq.servlet;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import net.sf.json.JSONArray;
+
+import com.jxapq.dao.BaseDao;
+import com.jxapq.dao.impl.BaseDAOImpl;
+import com.jxapq.exception.DBException;
+import com.jxapq.servlet.util.LinkStringTool;
+import com.jxapq.vo.SimpleInfo;
+import com.jxapq.vo.TreeNode;
+
+public class TreeServlet extends HttpServlet {
+
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		BaseDao base = new BaseDAOImpl();
+		String success = "", fail = "";
+		String value = LinkStringTool.connectStr(request);
+		String viewName = request.getParameter("view");// 视图名
+		String method = request.getParameter("method");// 操作名	
+		try {
+			List<Object> list = base.query(value, viewName, method, 0, 0);
+			List jsonList = new ArrayList();
+			for(int i = 0; i < list.size(); i++) {
+				SimpleInfo info = (SimpleInfo) list.get(i);
+				TreeNode tn = new TreeNode();
+				tn.setId(info.getId());
+				tn.setName(info.getCname() + " : " + info.getSname());
+				tn.setPid(info.getPid());
+				jsonList.add(tn);
+			}
+			String jsonStr = JSONArray.fromObject(jsonList).toString();
+System.out.println(jsonStr);
+			response.getWriter().print(jsonStr);
+		} catch (DBException e) {
+			request.setAttribute("message", "出错了");
+			request.getRequestDispatcher(fail).forward(request, response);
+		}
+
+	}
+  
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

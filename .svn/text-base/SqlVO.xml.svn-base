@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<voName id="login">  			<!-- 视图名 -->
+		<voClass>User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName> 	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="login_admin"> 			<!-- 视图名 -->
+		<voClass>User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>manager</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="sample"> 						<!-- 视图名 -->
+		<voClass>Log</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>species,sample</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>species.specifies_id=sample.specifies_id</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	
+	<voName id="log"> 						<!-- 视图名 -->
+		<voClass>Log</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_log</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="notice">					<!-- 视图名 -->
+		<voClass>Notices</voClass>			<!-- 视图对应的VO对象名 -->
+		<tableName>t_notice</tableName>		<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>			<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+</root>

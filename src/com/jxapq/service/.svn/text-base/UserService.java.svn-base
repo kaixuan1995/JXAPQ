@@ -1,0 +1,148 @@
+package com.jxapq.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.jxapq.dao.impl.BaseDAOImpl;
+import com.jxapq.exception.DBException;
+import com.jxapq.exception.UserException;
+import com.jxapq.vo.User;
+
+
+public class UserService {
+	BaseDAOImpl base = new BaseDAOImpl();
+	@SuppressWarnings({ "rawtypes" })
+	public List action(String voName,String params,String method) throws UserException, DBException {
+		if("login".equals(method)||"queryPassword".equals(method)) {
+			return login(voName,params);
+		}else if("register".equals(method)) {
+			return register(voName,params);
+		}else if("activeEmail".equals(method)||"alterInfo".equals(method)||"agreeVip".equals(method)||
+				"alterCode".equals(method)||"alterEmail".equals(method)||"alterPassword".equals(method)||
+				"notAgreeVip".equals(method)||"forgetpass3".equals(method)) {
+			return update(voName,params);
+		}else if("queryUserInfo".equals(method)||"forgetpass1".equals(method)||"forgetpass2".equals(method)){
+			return queryInfor(voName,params);
+		}else if("queryVip".equals(method)){
+			return queryVip(voName,params);
+		}else if("queryWorker".equals(method)){
+			return queryVip(voName,params);
+		}else if("addWorker".equals(method)){
+			return addWorker(voName,params);
+		}else if("addNotice".equals(method)){
+			return addNotice(voName,params);
+		}else if("queryNotice".equals(method)){
+			return queryNotice(voName,params);
+		}else if("delNotice".equals(method)||"delWorker".equals(method)){
+			return delete(voName,params);
+		}else {
+			throw new UserException("没有该操作类型");
+		}
+	}
+
+	/**
+	 * 删除信息功能
+	 * @param voName
+	 * @param params
+	 * @return
+	 * @throws DBException 
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private  List delete(String voName, String params) throws DBException {
+		List list = new ArrayList();
+		list.add(base.delete(params,voName,"delete"));
+		return list;
+	}
+
+	/**
+	 * 重置密码功能
+	 * @param voName
+	 * @param params
+	 * @return
+	 */
+	@SuppressWarnings("unused")
+	private <T> List<T> resetPass(String voName, String params) {
+		return null;
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * 查找用户信息功能
+	 * @param voName
+	 * @param params
+	 * @return
+	 * @throws DBException 
+	 */
+	private <T> List<T> queryInfor(String voName, String params) throws DBException {
+		return base.query(params, voName, "query", 0, 0);
+	}
+
+	/**
+	 * 更新用户信息功能
+	 * @param voName
+	 * @param params
+	 * @return
+	 * @throws DBException 
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private List update(String voName, String params) throws DBException {
+		List list = new ArrayList();
+		list.add(base.update(params, voName, "update"));
+		return list;
+	}
+
+	/**
+	 * 注册用户功能
+	 * @param voName
+	 * @param params
+	 * @return
+	 * @throws DBException 
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private <T> List<T> register(String voName, String params) throws DBException {
+		boolean bo = base.save(params, voName, "save");
+		List list = new ArrayList();
+		list.add(bo);
+		return list;
+		
+	}
+	//系统管理员发布公告
+	@SuppressWarnings({ "rawtypes", "unchecked", "unused" })
+	private <T>List <T>addNotice(String voName, String params) throws DBException {
+		boolean bo = base.save(params, voName, "save");
+		List list = new ArrayList();
+		list.add(bo);
+		return list;
+		
+	}//系统管理员添加工作人员
+	@SuppressWarnings({ "rawtypes", "unchecked", "unused" })
+	private <T>List <T>addWorker(String voName, String params) throws DBException {
+		boolean bo = base.save(params, voName, "save");
+		List list = new ArrayList();
+		list.add(bo);
+		return list;
+		
+	}
+	/**
+	 * 登入用户功能
+	 * @param voName
+	 * @param params
+	 * @return
+	 * @throws DBException 
+	 */
+	private  List login(String voName, String params) throws DBException {
+		List list = base.query(params, voName, "query", 0, 0);
+		return list;
+	}	
+	
+	private <T> List<T> queryVip(String voName, String params) throws DBException {
+		return base.query(params, voName, "query", 0, 0);
+	}
+	//查询公告
+	@SuppressWarnings("unused")
+	private <T> List<T> queryNotice(String voName, String params) throws DBException {
+		return base.query(params, voName, "query", 0, 0);
+	}
+	
+}

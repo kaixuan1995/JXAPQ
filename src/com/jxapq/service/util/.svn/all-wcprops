@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/JXAPQ/!svn/ver/411/JXAPQ/src/com/jxapq/service/util
+END
+CreatePic.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/JXAPQ/!svn/ver/387/JXAPQ/src/com/jxapq/service/util/CreatePic.java
+END
+FileUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/JXAPQ/!svn/ver/410/JXAPQ/src/com/jxapq/service/util/FileUtils.java
+END
+ExcelUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/JXAPQ/!svn/ver/409/JXAPQ/src/com/jxapq/service/util/ExcelUtils.java
+END
+IntegrationInfor.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/JXAPQ/!svn/ver/163/JXAPQ/src/com/jxapq/service/util/IntegrationInfor.java
+END
+XmlUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/JXAPQ/!svn/ver/203/JXAPQ/src/com/jxapq/service/util/XmlUtils.java
+END
+Reflex.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/JXAPQ/!svn/ver/372/JXAPQ/src/com/jxapq/service/util/Reflex.java
+END
+UploadUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/JXAPQ/!svn/ver/411/JXAPQ/src/com/jxapq/service/util/UploadUtils.java
+END
+CreateFileURL.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/JXAPQ/!svn/ver/365/JXAPQ/src/com/jxapq/service/util/CreateFileURL.java
+END
+SimpleDocument.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/JXAPQ/!svn/ver/362/JXAPQ/src/com/jxapq/service/util/SimpleDocument.java
+END
+WebStatistics.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/JXAPQ/!svn/ver/315/JXAPQ/src/com/jxapq/service/util/WebStatistics.java
+END
+PropertiesUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/JXAPQ/!svn/ver/163/JXAPQ/src/com/jxapq/service/util/PropertiesUtils.java
+END
+OutputUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/JXAPQ/!svn/ver/344/JXAPQ/src/com/jxapq/service/util/OutputUtil.java
+END

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query>
+	<index_generalquery success="/jxapq/jsp/second.jsp" fail="/jxapq/jsp/message.jsp" />
+	
+	<generalquery success="/jxapq/jsp/show.jsp" fail="/jxapq/jsp/message.jsp" />
+	
+	<highquery success="/jxapq/jsp/show.jsp" fail="/jxapq/jsp/message.jsp" />
+	<highquery2 success="/jxapq/jsp/show.jsp" fail="/jxapq/jsp/message.jsp" />
+	<sample success="/jxapq/jsp/ap_data/biaoben.jsp" fail="/jxapq/jsp/message.jsp" />
+	<pdynamics success="/jxapq/jsp/ap_data/pdynamics.jsp" fail="/jxapq/jsp/message.jsp" />
+	
+	<kingdom success="/jxapq/jsp/ap_data/01-jie.jsp" fail="/jxapq/jsp/message.jsp" />
+	<phylum success="/jxapq/jsp/ap_data/02-men.jsp" fail="/jxapq/jsp/message.jsp" />
+	<class success="/jxapq/jsp/ap_data/03-gang.jsp" fail="/jxapq/jsp/message.jsp" />
+	<subclass success="/jxapq/jsp/ap_data/03-gang.jsp" fail="/jxapq/jsp/message.jsp" />
+	
+	<order success="/jxapq/jsp/ap_data/04-mu.jsp" fail="/jxapq/jsp/message.jsp" />
+	<family success="/jxapq/jsp/ap_data/05-ke.jsp" fail="/jxapq/jsp/message.jsp" />
+	<fucus success="/jxapq/jsp/ap_data/06-shu.jsp" fail="/jxapq/jsp/message.jsp" />
+	<species success="/jxapq/jsp/ap_data/07-zhong.jsp" fail="/jxapq/jsp/message.jsp" />
+	
+</query>

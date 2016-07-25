@@ -1,0 +1,376 @@
+package com.jxapq.servlet;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.URLEncoder;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.jxapq.servlet.util.AnaysisXmlTool;
+import com.jxapq.servlet.util.DBbackupRecoverUtil;
+import com.jxapq.servlet.util.EmailUtil;
+import com.jxapq.servlet.util.LinkStringTool;
+import com.jxapq.vo.User;
+
+@SuppressWarnings("serial")
+public class UserServlet extends HttpServlet {
+
+	String filePath = null;
+	AnaysisXmlTool axt = null;
+	String value = null;
+	String viewName = null;
+	String methodName = null;
+	String serviceName = null;
+	String forwardName = null;
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		filePath = getServletContext().getRealPath(
+				"/WEB-INF/classes/com/jxapq/config/Control.xml");
+		axt = new AnaysisXmlTool(filePath);// 解析Control.xml工具
+		value = LinkStringTool.connectStr(request);
+		System.out.println("表单字符串：" + value);
+		viewName = request.getParameter("view");// 视图名
+		methodName = request.getParameter("method");// 操作名
+		serviceName = axt.getViewName(viewName, "serviceName");// 根据viewName判断调用的service名
+		forwardName = axt.getViewName(viewName, "forward");// 根据viewName判断调用的要转发页面名
+		// 调用不同的方法
+		try {
+			Method method = getClass().getDeclaredMethod(methodName,
+					HttpServletRequest.class, HttpServletResponse.class);
+			method.invoke(this, request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	// 登入
+	public void login(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("登录字符串：" + value);
+		List list = invokeService();
+		System.out.println(list.get(0));
+		request.getSession().setAttribute("userList", list);
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+
+	// 注册
+	public void register(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		value = emailCodeCheck(request, value, 0);// 0代表发送激活链接
+		invokeService();
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+
+	// 激活邮箱
+	public void activeEmail(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		invokeService();
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+
+	// 查询个人信息
+	public void queryUserInfo(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		List<User> list = invokeService();
+		request.getSession().setAttribute("userList", list);
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+
+	// 修改个人信息
+	public void alterInfo(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		invokeService();
+		List<User> user = (List<User>) request.getSession().getAttribute(
+				"userList");
+		request.setAttribute("user_id", user.get(0).getUser_id());
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+
+	// 修改邮箱验证吗
+	public void alterCode(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=utf-8");
+		value = emailCodeCheck(request, value, 1);// 1代表验证码
+		if (value.equals("false")) {
+			response.getWriter().print("0");// 失败
+			return;
+		} else {
+			response.getWriter().print("1");// 验证码发送成功
+		}
+		invokeService();
+	}
+
+	// 修改邮箱
+	public void alterEmail(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		invokeService();
+		List<User> user = (List<User>) request.getSession().getAttribute(
+				"userList");
+		request.setAttribute("user_id", user.get(0).getUser_id());
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+
+	// 查询密码
+	public void queryPassword(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String user_id = request.getParameter("#w#user_id =");
+		String oldPassword = request.getParameter("#w#user_password =");
+		String newpassword = request.getParameter("#s#user_alter_password =");
+		value = "user_password =?user_id =?%+%" + oldPassword + "#%$#"
+				+ user_id;
+		System.out.println("替换后的字符串：" + value);
+		List<User> list = invokeService();
+		if (list.toString().equals("[]")) {
+			System.out.println("密码错误！");
+			request.getRequestDispatcher("/user/alterPassword.jsp").forward(
+					request, response);
+		} else {
+			alterPassword(request, response, newpassword, user_id);
+		}
+	}
+
+	// 修改密码
+	public void alterPassword(HttpServletRequest request,
+			HttpServletResponse response, String newpassword, String user_id)
+			throws ServletException, IOException {
+		value = "#s#user_password =?#w#user_id =?%+%" + newpassword + "#%$#"
+				+ user_id;
+		methodName = "alterPassword";
+		System.out.println("视图名" + viewName);
+		invokeService();
+		List<User> user = (List<User>) request.getSession().getAttribute(
+				"userList");
+		request.setAttribute("user_id", user.get(0).getUser_id());
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+
+	// 工作人员查询信息
+	public void queryVip(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		List<User> list = invokeService();
+		request.setAttribute("userList", list);
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+
+	// 系统管理员查询信息
+	public void queryWorker(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		List<User> list = invokeService();
+		request.setAttribute("workerList", list);
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+
+	// 审核vip
+	public void agreeVip(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("审核通过" + value);
+		invokeService();
+		request.setAttribute("message", "审核通过");
+		methodName = "queryVip";
+		viewName = "queryVipView";
+		value = "user_type =?%+%0";
+		queryVip(request, response);
+	}
+
+	// 管理员添加公告
+	public void addNotice(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		List list = invokeService();
+		request.setAttribute("message", "添加公告成功");
+		methodName = "queryNotice";
+		viewName = "queryNoticeView";
+		value = "1 =?%+%1";
+		queryNotice(request, response);
+	}
+
+	// 显示公告
+	public void queryNotice(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		List list = invokeService();
+		request.setAttribute("noticeList", list);
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+
+	// 删除公告
+	public void delNotice(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		List list = invokeService();
+		request.setAttribute("message", "删除公告成功");
+		methodName = "queryNotice";
+		viewName = "queryNoticeView";
+		value = "1 =?%+%1";
+		queryNotice(request, response);
+	}
+
+	// 添加工作人员
+	public void addWorker(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		List list = invokeService();
+		request.setAttribute("message", "添加工作人员成功");
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+
+	// 删除工作人员
+	public void delWorker(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		List list = invokeService();
+		request.setAttribute("message", "删除工作人员成功");
+		methodName = "queryWorker";
+		viewName = "queryWorkerView";
+		value = "1 =?%+%1";
+		queryWorker(request, response);
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+	// 数据库备份
+		public void backupDB(HttpServletRequest request,
+				HttpServletResponse response) throws ServletException, IOException {
+			String serverUrl = "localhost";
+			String userName = "root";
+			String pwd = "root";
+			DBbackupRecoverUtil backup = new DBbackupRecoverUtil(serverUrl,
+					userName, pwd);
+			String dbFileName = backup.backup("e:\\", "demo");
+			response.setHeader("content-disposition", "attachment;filename="
+					+ URLEncoder.encode(dbFileName, "UTF-8"));
+				// 读取要下载的文件，保存到文件输入流
+				FileInputStream in = new FileInputStream(dbFileName);
+				// 创建输出流
+				OutputStream out = response.getOutputStream();
+				// 创建缓冲区
+				byte buffer[] = new byte[1024];
+				int len = 0;
+				// 循环将输入流中的内容读取到缓冲区当中
+				while ((len = in.read(buffer)) > 0) {
+					// 输出缓冲区的内容到浏览器，实现文件下载
+					out.write(buffer, 0, len);
+				}
+				// 关闭文件输入流
+				in.close();
+				// 关闭输出流
+				out.close();
+			}
+		
+		public void recover(HttpServletRequest request,
+				HttpServletResponse response) throws Exception {
+			String serverUrl = "localhost";
+			String userName = "root";
+			String pwd = "root";
+			DBbackupRecoverUtil backup = new DBbackupRecoverUtil(serverUrl,
+					userName, pwd);
+			String dbfileName = request.getParameter("dbfileName");
+			System.out.println(dbfileName+"oooooooo");
+			backup.restore(dbfileName,"demo");
+			
+		}
+	//忘记密码第一步
+	public void forgetpass1(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("忘记密码第一步:"+value);
+		List<User> flist = invokeService();
+		request.setAttribute("user_id", flist.get(0).getUser_id());
+		request.setAttribute("user_email", flist.get(0).getUser_email());
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+	//忘记密码第二步
+	public void forgetpass2(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("忘记密码第二步:"+value);
+		List<User> flist = invokeService();
+		request.setAttribute("user_id", flist.get(0).getUser_id());
+		request.setAttribute("user_email", flist.get(0).getUser_email());
+		request.setAttribute("user_code", flist.get(0).getUser_code());
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+	//忘记密码第三步
+	public void forgetpass3(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("忘记密码第三步:"+value);
+		invokeService();
+		request.setAttribute("message","");
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+	// 退出
+	public void exit(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getSession().invalidate();
+		request.getRequestDispatcher(forwardName).forward(request, response);
+	}
+
+	// 反射调用service方法
+	private List invokeService() {
+		Class<?> clazz;
+		try {
+			clazz = Class.forName(serviceName);
+			Method actionMethod = clazz.getMethod("action", String.class,
+					String.class, String.class);
+			@SuppressWarnings("unchecked")
+			List list = (List) actionMethod.invoke(clazz.newInstance(),
+					viewName, value, methodName);
+			return list;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	// 邮箱发送验证码
+	private String emailCodeCheck(HttpServletRequest request, String value,
+			int type) {
+		String user_id = request.getParameter("user_id =");
+		String user_email = request.getParameter("user_email =");
+		String code = (int) ((Math.random() * 9 + 1) * 100000) + "";
+		EmailUtil emailUtil = new EmailUtil(user_id, user_email, code);
+		if (type == 0) {//0代表发送激活链接
+			if(emailUtil.send(type)==true){
+				value = "user_code =?" + value;
+				value = value.replace("%+%", "%+%" + code + "#%$#");
+				// System.out.println("处理之后的字符串："+value);
+				return value;
+			}else{
+				return "false";
+			}
+		} else if(type == 1){// 1代表验证码
+			if (emailUtil.send(type) == true) {
+				value = "#s#user_code =?" + value;
+				value = value.replace("%+%", "%+%" + code + "#%$#");
+				value = value.replace("user_id", "#w#user_id");
+				value = value.replace("user_email =?", "");
+				value = value.replace("#%$#" + user_email, "");
+				System.out.println("处理之后的字符串："+value);
+				return value;
+			} else {
+				return "false";
+			}
+		}else{
+			return "false";
+		}
+	}
+
+}

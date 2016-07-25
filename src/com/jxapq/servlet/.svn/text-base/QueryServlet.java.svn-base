@@ -1,0 +1,59 @@
+package com.jxapq.servlet;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.dom4j.Document;
+import org.dom4j.Element;
+
+import com.jxapq.dao.BaseDao;
+import com.jxapq.dao.impl.BaseDAOImpl;
+import com.jxapq.exception.DBException;
+import com.jxapq.exception.UtilException;
+import com.jxapq.service.util.XmlUtils;
+import com.jxapq.servlet.util.LinkStringTool;
+
+public class QueryServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		BaseDao base = new BaseDAOImpl();
+		String success = "", fail = "";
+		String value = LinkStringTool.connectStr(request);
+		String viewName = request.getParameter("view");// 视图名
+		String method = request.getParameter("method");// 操作名
+		
+		try {
+			Document d = XmlUtils.getDocument("com/jxapq/config/query.xml");
+			Element e = d.getRootElement();
+			success = e.element(viewName).attributeValue("success");
+			fail = e.element(viewName).attributeValue("fail");
+System.out.println(value+"————————"+viewName+"————————"+method);
+			List<Object> list = base.query(value, viewName, method, 0, 0);
+			request.setAttribute("list", list);
+			request.getRequestDispatcher(success).forward(request, response);
+		} catch (UtilException e1) {
+			request.setAttribute("message", "查询失败");
+			request.getRequestDispatcher(fail).forward(request, response);
+		} catch (DBException e) {
+			request.setAttribute("message", "查询失败");
+			request.getRequestDispatcher(fail).forward(request, response);
+		}
+		
+		
+	}
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		doGet(request, response);
+	}
+
+}

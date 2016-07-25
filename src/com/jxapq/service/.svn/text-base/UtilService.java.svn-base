@@ -1,0 +1,77 @@
+package com.jxapq.service;
+import java.awt.Image;
+import java.util.List;
+
+import com.jxapq.exception.UtilException;
+
+
+
+
+
+
+public class UtilService{
+
+	public <T> List<T> action(String voName, String params, String method) throws UtilException {
+		if("导入".equals(method)) {
+			return input(voName,params);
+		}else if("导出".equals(method)) {
+			return output(voName,params);
+		}else if("统计".equals(method)) {
+			return statistics(voName, params);
+		}else {
+			throw new UtilException("没有该操作类型");
+		}
+	}
+	
+	public boolean action(String voName, String params, String method,Image[] image) {
+		uploadImage(voName,params,image);
+		return false;
+	}
+	
+	/**
+	 * 导入功能
+	 * @param voName
+	 * @param params
+	 * @return
+	 */
+	private <T> List<T> input(String voName, String params) {
+		
+		return null;
+	}
+
+	
+	/**
+	 * 导入功能
+	 * @param <T>
+	 */
+	private <T> List<T> output(String voName, String params) {
+		return null;
+	}
+	
+	
+	/**
+	 * 上传图片
+	 * @param voName
+	 * @param params
+	 * @param image
+	 * @return
+	 */
+	private boolean uploadImage(String voName, String params,Image[] image) {
+		return false;
+	}
+	
+	
+	/**
+	 * 统计功能
+	 * @param voName
+	 * @param params
+	 * @return
+	 */
+	private <T> List<T> statistics(String voName,String params){
+			
+		return null;
+	}	
+	
+	
+	
+}

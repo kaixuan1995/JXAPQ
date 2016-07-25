@@ -1,0 +1,86 @@
+package com.jxapq.vo;
+
+public class Fucus {
+
+	private int fucus_id;
+	private String fucus_cname;
+	private String fucus_sname;
+	private String fucus_ename;
+	private String fucus_spelling;
+	private String fucus_commoninfo;
+	private String fucus_disvocer;
+	private String fucus_summarize;
+	private String fucus_literature;
+	private String family_id_fk;
+	private String subreginal_id_fk;
+	public int getFucus_id() {
+		return fucus_id;
+	}
+	public void setFucus_id(int fucus_id) {
+		this.fucus_id = fucus_id;
+	}
+	public String getFucus_cname() {
+		return fucus_cname;
+	}
+	public void setFucus_cname(String fucus_cname) {
+		this.fucus_cname = fucus_cname;
+	}
+	public String getFucus_sname() {
+		return fucus_sname;
+	}
+	public void setFucus_sname(String fucus_sname) {
+		this.fucus_sname = fucus_sname;
+	}
+	public String getFucus_ename() {
+		return fucus_ename;
+	}
+	public void setFucus_ename(String fucus_ename) {
+		this.fucus_ename = fucus_ename;
+	}
+	public String getFucus_spelling() {
+		return fucus_spelling;
+	}
+	public void setFucus_spelling(String fucus_spelling) {
+		this.fucus_spelling = fucus_spelling;
+	}
+	public String getFucus_commoninfo() {
+		return fucus_commoninfo;
+	}
+	public void setFucus_commoninfo(String fucus_commoninfo) {
+		this.fucus_commoninfo = fucus_commoninfo;
+	}
+	public String getFucus_disvocer() {
+		return fucus_disvocer;
+	}
+	public void setFucus_disvocer(String fucus_disvocer) {
+		this.fucus_disvocer = fucus_disvocer;
+	}
+	public String getFucus_summarize() {
+		return fucus_summarize;
+	}
+	public void setFucus_summarize(String fucus_summarize) {
+		this.fucus_summarize = fucus_summarize;
+	}
+	public String getFucus_literature() {
+		return fucus_literature;
+	}
+	public void setFucus_literature(String fucus_literature) {
+		this.fucus_literature = fucus_literature;
+	}
+	public String getFamily_id_fk() {
+		return family_id_fk;
+	}
+	public void setFamily_id_fk(String family_id_fk) {
+		this.family_id_fk = family_id_fk;
+	}
+	public String getSubreginal_id_fk() {
+		return subreginal_id_fk;
+	}
+	public void setSubreginal_id_fk(String subreginal_id_fk) {
+		this.subreginal_id_fk = subreginal_id_fk;
+	}
+	
+	
+	
+	
+}

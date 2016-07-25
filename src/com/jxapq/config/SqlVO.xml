@@ -1,0 +1,691 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<voName id="userLoginView">  			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName> 	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="adminLoginView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Admin</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_manager</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="registerView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="activeEmailView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="userInfoView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="alterInfoView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="alterCodeView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="alterEmailView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="forgetpass1View">  			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName> 	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+	<voName id="forgetpass2View">  			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName> 	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+	<voName id="forgetpass3View">  			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName> 	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+	<voName id="queryPasswordView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+	<voName id="queryEmailView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="addNoticeView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Notice</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_notice</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="delNoticeView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Notice</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_notice</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+	<voName id="queryVipView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+	<voName id="queryNoticeView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Notice</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_notice</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+	<voName id="agreeVipView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="addWorkerView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+	<voName id="delWorkerView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="queryWorkerView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="queryAllWorkerView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="checkView"> 			<!-- 视图名 -->
+		<voClass>com.jxapq.vo.User</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_user</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection>	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon><!-- 参数间连接条件 -->
+	</voName>
+
+
+
+	<voName id="sample"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Sample</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_species,t_sample</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>species_id=species_id_fk</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="pdynamics"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Species_Dynamic</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_species,t_pdynamics,t_dictionary</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>species_id=species_id_fk and development_fk=dictionary_id
+		</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="log"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Log</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_log</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="highquery"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_species,v_species</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>id=species_id</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="highquery2"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_species,v_species</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>id=species_id</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="generalquery"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_publicname</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	
+	<voName id="index_generalquery"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_publicname</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="deletePdynamicsView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Species_Dynamic</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_pdynamics</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	
+	<voName id="deleteBiaobenView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Sample</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_sample</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="statistics"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.CountSpecies</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_order,t_family,t_fucus,t_species</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>order_id=order_id_fk and family_id=family_id_fk and
+			fucus_id_fk=fucus_id</Connection>
+
+		<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+
+
+	<voName id="addPaohuquView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Protection</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_protection</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="addBiaobenView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Sample</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_sample</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="addGangView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Clazz</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_class</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="addJieView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Kingdom</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_kingdom</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="addKeView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Family</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_family</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="addMenView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Phylum</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_phylum</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="addMuView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Order</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_order</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="addYagangView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Clazz</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_class</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="addQuxileixingView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.ReginalType</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_reginal</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="addShuView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Fucus</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_fucus</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="addZhongView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Species</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_species</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="addYaZhongView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SubSpecies</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_subspecies</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="addShujuzidianView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Dictionary</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_dictionary</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="addSpecies_protectionView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Species_Protection</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_speciesprotection</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="addSpecies_Yazhong"> 						<!-- 视图名 -->
+			<voClass>com.jxapq.vo.SubSpecies</voClass>				<!-- 视图对应的VO对象名 -->
+			<tableName>subspecies</tableName>	<!-- 视图对应物理表名 -->
+			<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+			<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="addSpecies_synamicView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Species_Dynamic</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_pdynamics</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="addSpecies_distributeView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Species_distribute</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_distribute</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="addZiquxileixingView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SubreginalType</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_subreginal</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="kingdom"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Kingdom</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_kingdom</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="phylum"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Phylum</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_phylum</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="class"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Gang</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_class</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="subclass"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Gang</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_class</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="order"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Order</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_order</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="family"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Family</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_family</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="fucus"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Fucus</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_fucus</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="species"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.po.Species</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_species2,v_tree_species</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>id=species_id</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="tree"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_kingdom</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="treekingdom"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_phylum</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="treephylum"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_class</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="treeclass"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_subclass</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="treeclass2"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_order</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="treesubclass"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_order</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="treeorder"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_family</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="treefamily"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_fucus</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="treefucus"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_species</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="deleteBaohuquView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Protection</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_protection</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+	<voName id="deleteQuxileixingView"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.ReginalType</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>t_reginal</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="deleteZiquxileixingView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SubreginalType</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_subreginal</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="deleteJieView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Kingdom</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_kingdom</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="deleteMenView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Phylum</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_phylum</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="deleteGangView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Clazz</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_class</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="deleteYagangView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Clazz</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_class</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="deleteMuView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Order</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_order</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="deleteKeView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Family</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_family</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="deleteShuView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Fucus</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_fucus</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="deleteZhongView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Species</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_species</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="deleteShujuzidianView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Dictionary</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_dictionary</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="updateShujuzidianView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Dictionary</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_dictionary</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	
+	
+	<voName id="updateBiaobenView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Sample</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_sample</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="updateZiquxileixingView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SubreginalType</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_subreginal</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="updateQuxileixingView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.ReginalType</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_reginal</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="updateBaohuquView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Protection</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_protection</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="updateJieView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Kingdom</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_kingdom</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="updateMenView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Phylum</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_phylum</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="updateGangView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Clazz</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_class</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="updateMuView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Order</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_order</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="updateKeView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Family</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_family</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="updateShuView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Fucus</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_fucus</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="updateZhongView"> 					<!-- 视图名 -->
+		<voClass>com.jxapq.vo.Species</voClass>		<!-- 视图对应的VO对象名 -->
+		<tableName>t_species</tableName>					<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 						<!-- 物理表连接条件 -->
+		<ParameterCon>and</ParameterCon>					<!-- 参数间连接条件 -->
+	</voName>
+
+
+	<voName id="kingdomchilds"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_phylum</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="phylumchilds"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_class</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="classchilds"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_subclass</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="classchilds2"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_order</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="subclasschilds"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_order</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="orderchilds"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_family</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="familychilds"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_fucus</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+	<voName id="fucuschilds"> 						<!-- 视图名 -->
+		<voClass>com.jxapq.vo.SimpleInfo</voClass>				<!-- 视图对应的VO对象名 -->
+		<tableName>v_tree_species</tableName>	<!-- 视图对应物理表名 -->
+		<Connection>1=1</Connection> 	<!-- 物理表连接条件 -->
+		<ParameterCon>or</ParameterCon>		<!-- 参数间连接条件 -->
+	</voName>
+
+
+</root>

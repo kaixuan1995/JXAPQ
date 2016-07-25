@@ -1,0 +1,65 @@
+package com.jxapq.vo;
+
+/*
+ * 站内资源
+ * 
+ */
+public class Resources {
+	private int imageCount;	//图片数量
+	private int userCount;		//用户数量
+	private int specieCount;	//物种数量
+	private int sampleCount;	//标本数量
+	 
+	public Resources() {
+
+	}
+
+	public Resources(int imageCount, int userCount, int specieCount,
+			int sampleCount) {
+		this.imageCount = imageCount;
+		this.userCount = userCount;
+		this.specieCount = specieCount;
+		this.sampleCount = sampleCount;
+	}
+
+	public int getImageCount() {
+		return imageCount;
+	}
+
+	public void setImageCount(int imageCount) {
+		this.imageCount = imageCount;
+	}
+
+	public int getUserCount() {
+		return userCount;
+	}
+
+	public void setUserCount(int userCount) {
+		this.userCount = userCount;
+	}
+
+	public int getSpecieCount() {
+		return specieCount;
+	}
+
+	public void setSpecieCount(int specieCount) {
+		this.specieCount = specieCount;
+	}
+
+	public int getSampleCount() {
+		return sampleCount;
+	}
+
+	public void setSampleCount(int sampleCount) {
+		this.sampleCount = sampleCount;
+	}
+
+	@Override
+	public String toString() {
+		return "Resources [imageCount=" + imageCount + ", userCount="
+				+ userCount + ", specieCount=" + specieCount + ", sampleCount="
+				+ sampleCount + "]";
+	}
+	 
+	 
+}	

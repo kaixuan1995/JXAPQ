@@ -1,0 +1,212 @@
+package com.jxapq.service.util;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import java.util.List;
+
+import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.ss.util.Region;
+
+import com.jxapq.exception.UtilException;
+
+
+@SuppressWarnings("deprecation")
+public class OutputUtil {
+	/**
+	 * 
+	 * 生成要下载的Excel文件
+	 * @param list			//要导出的数据
+	 * @param voName        //与导出数据相匹配的properties文件名
+	 * @param URL			//项目的根目录下
+	 * @return
+	 * @throws UtilException 
+	 * @throws Exception
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public static String output(List list,String voName,String URL) throws UtilException{
+		//解析配置文件
+		String s[] = Reflex.reflexAnnotation(voName);
+		HSSFWorkbook workbook = new HSSFWorkbook(); 			//创建Excel工作簿对象
+		HSSFSheet sheet = workbook.createSheet();				//创建一个工作簿对象
+		//设置样式
+		HSSFCellStyle titleStyle = workbook.createCellStyle();
+		titleStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER_SELECTION);		//水平居中
+		titleStyle.setAlignment(HSSFCellStyle.VERTICAL_CENTER);				//垂直居中
+		//设置字体
+		HSSFFont titleFont = workbook.createFont();							//创建字体对象
+		titleFont.setFontHeightInPoints((short) 15);						//设置字体大小
+		titleFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);					//设置粗体
+		titleFont.setFontName("黑体");										//设置为黑体字
+		titleStyle.setFont(titleFont);
+		//合并单元格
+		sheet.addMergedRegion(new Region(0, (short)0, 1, (short)s.length));   //合并第一行的第一道第五个单元格
+		HSSFRow row = null;
+		HSSFCell cell = null;
+		
+		row = sheet.createRow(0);
+		cell = row.createCell(0);
+		cell.setCellStyle(titleStyle);
+		cell.setCellValue(new HSSFRichTextString("江西动植物检索系统"));
+		//设置表文格式
+		HSSFCellStyle tableStyle = workbook.createCellStyle();
+		//设置表文字体
+		HSSFFont tableFont = workbook.createFont();
+		tableFont.setFontHeightInPoints((short) 12);
+		tableFont.setFontName("宋体");
+		tableStyle.setFont(tableFont);
+		
+		//加载Excel的属性
+		row = sheet.createRow(2);
+		for(int i = 0;i<s.length;i++) {
+			cell = row.createCell(i);
+			cell.setCellStyle(tableStyle);
+			cell.setCellValue(new HSSFRichTextString(s[i]));
+		}
+		
+		String [][] strArray = new String[list.size()][s.length];
+		//运用ServiceUtils工具包中的Reflex进行List遍历
+		strArray = Reflex.reflex(list);
+		for(int i = 0;i<list.size();i++) {
+			row = sheet.createRow(i+3);
+			for(int j = 0;j<s.length;j++) {
+				cell = row.createCell(j);
+				cell.setCellStyle(tableStyle);
+				cell.setCellValue(new HSSFRichTextString(strArray[i][j]));
+			}
+		}
+		
+		String temp = CreateFileURL.createSignURL();
+		URL = CreateFileURL.createFile(URL+File.separator+"output"+File.separator+temp+File.separator);
+		FileOutputStream os = null;
+		try {
+			os = new FileOutputStream(URL+voName+".xls");
+			//保存文件到指定目录下
+			workbook.write(os);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new UtilException(URL+voName+".xls"+"的文件");
+		}finally{
+			try {
+				os.close();
+			} catch (IOException e) {
+				throw new UtilException("关闭数据留失败");
+			}
+		}
+		return URL+File.separator+voName+".xls";	
+		
+	}
+	
+	/**
+	 * 导出统计资料
+	 * @param list
+	 * @param voName
+	 * @return
+	 * @throws UtilException
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public static List outputStatic(List list,String voName,String URL) throws UtilException{
+		//解析配置文件
+		String s[] = PropertiesUtils.getValue(voName);
+		
+		
+		HSSFWorkbook workbook = new HSSFWorkbook(); 			//创建Excel工作簿对象
+		HSSFSheet sheet = workbook.createSheet();				//创建一个工作簿对象
+		//设置样式
+		HSSFCellStyle titleStyle = workbook.createCellStyle();
+		titleStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER_SELECTION);		//水平居中
+		titleStyle.setAlignment(HSSFCellStyle.VERTICAL_CENTER);				//垂直居中
+		//设置字体
+		HSSFFont titleFont = workbook.createFont();							//创建字体对象
+		titleFont.setFontHeightInPoints((short) 15);						//设置字体大小
+		titleFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);					//设置粗体
+		titleFont.setFontName("黑体");										//设置为黑体字
+		titleStyle.setFont(titleFont);
+		//合并单元格
+		sheet.addMergedRegion(new Region(0, (short)0, 1, (short)s.length));   //合并第一行的第一道第五个单元格
+		HSSFRow row = null;
+		HSSFCell cell = null;
+		
+		
+		
+		row = sheet.createRow(0);
+		cell = row.createCell(0);
+		cell.setCellStyle(titleStyle);
+		cell.setCellValue(new HSSFRichTextString("江西动植物检索系统"));
+		//设置表文格式
+		HSSFCellStyle tableStyle = workbook.createCellStyle();
+		//设置表文字体
+		HSSFFont tableFont = workbook.createFont();
+		tableFont.setFontHeightInPoints((short) 12);
+		tableFont.setFontName("宋体");
+		tableStyle.setFont(tableFont);
+		
+		//加载Excel的属性
+		row = sheet.createRow(2);
+		for(int i = 0;i<s.length;i++) {
+			cell = row.createCell(i);
+			cell.setCellStyle(tableStyle);
+			cell.setCellValue(new HSSFRichTextString(s[i]));
+		}
+		
+		String [][] strArray = new String[list.size()][s.length];
+		//运用ServiceUtils工具包中的Reflex进行List遍历
+		strArray = Reflex.reflex(list);
+		for(int i = 0;i<list.size();i++) {
+			row = sheet.createRow(i+3);
+			for(int j = 0;j<s.length;j++) {
+				cell = row.createCell(j);
+				cell.setCellStyle(tableStyle);
+				cell.setCellValue(new HSSFRichTextString(strArray[i][j]));
+			}
+		}
+		//文件输出流
+		String temp = CreateFileURL.createSignURL();
+		URL = CreateFileURL.createFile(URL+File.separator+"output"+File.separator+temp+File.separator);
+		
+		List listUrl = CreatePic.outputPie(list,URL,temp);
+		
+		FileOutputStream os = null;
+		try {
+			os = new FileOutputStream(URL+voName+".xls");
+			listUrl.add("output/"+temp+"/"+voName+".xls");
+			//保存文件到指定目录下
+			workbook.write(os);
+		} catch (Exception e) {
+			throw new UtilException(URL+voName+".xls"+"的文件");
+		}finally{
+			try {
+				os.close();
+			} catch (IOException e) {
+				throw new UtilException("关闭数据留失败");
+			}
+		}
+		return listUrl;	
+	}
+	
+	
+	
+	
+	/*
+	 * 删除下载过后的文件
+	 */
+	public static void deleteFile(String URL){
+		File file = new File(URL);
+		file.delete();
+		File filePa = new File(file.getParent());
+		filePa.delete();
+	}
+	
+	public static void deleteFile(List<String> list){
+		for(int i = 0;i<list.size();i++){
+			File file = new File(list.get(i));
+			System.out.println(list.get(i));
+			file.delete();
+			File filePa = new File(file.getParent());
+			filePa.delete();
+		}
+	}
+	
+}
+	

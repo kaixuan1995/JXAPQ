@@ -1,0 +1,7 @@
+smtp=smtp.qq.com
+username=438443117
+password=z123456
+from=438443117@qq.com
+subject=\u6765\u81EA\u6C5F\u897F\u7701\u52A8\u690D\u7269\u68C0\u7D22\u7684\u6CE8\u518C\u6FC0\u6D3B\u90AE\u4EF6\uFF01
+contentLink=<h3>\u4F60\u597D\uFF1A{0} \!</h3><h3>\u8BF7\u70B9\u51FB<a href\="http\://localhost\:8080/JXAPQ/UserServlet?%23s%23user_markcode %3D\=1&%23w%23user_id %3D\={1}&%23w%23user_code %3D\={2}&view\=activeEmailView&method\=activeEmail"><font color\='red'>\u8FD9\u91CC</font></a>\u6765\u6FC0\u6D3B\u60A8\u7684\u8D26\u6237\uFF01</h3>
+contentCode=<h3>\u4F60\u597D\uFF1A{0} \!</h3><h3>\u4F60\u7684\u9A8C\u8BC1\u7801\u4E3A\uFF1A<font color\='red'>{1}</font>\uFF0C\u4E3A\u4E86\u60A8\u7684\u8D26\u6237\u5B89\u5168\uFF0C\u8BF7\u52FF\u544A\u8BC9\u4ED6\u4EBA\uFF01\uFF01</h3>

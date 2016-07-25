@@ -1,0 +1,44 @@
+package com.jxapq.junit;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class BaseDAOImplTest {
+
+	@Test
+	public void testSave() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testUpdate() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testDelete() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testQueryBySQLStringClassOfTIntInt() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testQueryBySQLString() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testQuery() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testMain() {
+		fail("Not yet implemented");
+	}
+
+}

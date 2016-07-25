@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/JXAPQ/!svn/ver/71/JXAPQ/src/com/jxapq/exception
+END
+DBException.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/JXAPQ/!svn/ver/71/JXAPQ/src/com/jxapq/exception/DBException.java
+END
+UtilException.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/JXAPQ/!svn/ver/71/JXAPQ/src/com/jxapq/exception/UtilException.java
+END
+UserException.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/JXAPQ/!svn/ver/71/JXAPQ/src/com/jxapq/exception/UserException.java
+END

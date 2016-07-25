@@ -1,0 +1,55 @@
+package com.jxapq.vo;
+
+public class CountSpecies {
+	private String species_id;
+	private String species_cname;
+	private String species_addword;
+	private String species_discover;
+	private String fucus_sname;
+	private String family_sname;
+	private String order_sname;
+	public String getSpecies_id() {
+		return species_id;
+	}
+	public void setSpecies_id(String species_id) {
+		this.species_id = species_id;
+	}
+	public String getSpecies_cname() {
+		return species_cname;
+	}
+	public void setSpecies_cname(String species_cname) {
+		this.species_cname = species_cname;
+	}
+	public String getSpecies_addword() {
+		return species_addword;
+	}
+	public void setSpecies_addword(String species_addword) {
+		this.species_addword = species_addword;
+	}
+	public String getSpecies_discover() {
+		return species_discover;
+	}
+	public void setSpecies_discover(String species_discover) {
+		this.species_discover = species_discover;
+	}
+	public String getFucus_sname() {
+		return fucus_sname;
+	}
+	public void setFucus_sname(String fucus_sname) {
+		this.fucus_sname = fucus_sname;
+	}
+	public String getFamily_sname() {
+		return family_sname;
+	}
+	public void setFamily_sname(String family_sname) {
+		this.family_sname = family_sname;
+	}
+	public String getOrder_sname() {
+		return order_sname;
+	}
+	public void setOrder_sname(String order_sname) {
+		this.order_sname = order_sname;
+	}
+	
+	
+}

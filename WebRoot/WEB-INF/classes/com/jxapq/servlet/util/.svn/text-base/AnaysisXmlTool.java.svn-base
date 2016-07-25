@@ -1,0 +1,39 @@
+package com.jxapq.servlet.util;
+
+import java.io.File;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+//解析xml工具类
+public class AnaysisXmlTool {
+	private String fileName = null;//xml文件名
+	private SAXReader saxread = new SAXReader();
+	private Document document;
+	private String result = null;
+	public AnaysisXmlTool(String fileName) {
+		this.fileName = fileName;
+	}
+
+	// 根据要获取的名得到值
+	public String getViewName(String name, String type) {
+		try {
+			document = saxread.read(new File(fileName));
+			Element RootElement = document.getRootElement();
+			Element firstElement = RootElement.element(name);
+			result = firstElement.attributeValue(type);
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public static void main(String[] args) {
+		AnaysisXmlTool tool = new AnaysisXmlTool("D:\\tomcat\\apache-tomcat-7.0.42\\apache-tomcat-7.0.42\\webapps\\JXAPQ\\WEB-INF\\Control.xml");
+		String result = tool.getViewName("registerView", "name");
+		System.out.println(result);
+
+	}
+
+}

@@ -1,0 +1,101 @@
+package com.jxapq.vo;
+
+public class Family {
+	private String family_id;
+	private String family_sname;
+	private String family_cname;
+	private String family_ename;
+	private String family_enamee;
+	private String family_spelling;
+	private String family_summarize;
+	private String family_notes;
+	private String family_literature;
+	private String order_id_fk;
+	private int subreginal_id_fk;
+	public Family() {
+	}
+	public Family(String family_sname, String family_cname,
+			String family_ename, String family_enamee, String family_spelling,
+			String family_summarize, String family_notes,
+			String family_literature, String order_id_fk,
+			int subreginal_id_fk) {
+		this.family_sname = family_sname;
+		this.family_cname = family_cname;
+		this.family_ename = family_ename;
+		this.family_enamee = family_enamee;
+		this.family_spelling = family_spelling;
+		this.family_summarize = family_summarize;
+		this.family_notes = family_notes;
+		this.family_literature = family_literature;
+		this.order_id_fk = order_id_fk;
+		this.subreginal_id_fk = subreginal_id_fk;
+	}
+	public String getFamily_id() {
+		return family_id;
+	}
+	public void setFamily_id(String family_id) {
+		this.family_id = family_id;
+	}
+	public String getFamily_sname() {
+		return family_sname;
+	}
+	public void setFamily_sname(String family_sname) {
+		this.family_sname = family_sname;
+	}
+	public String getFamily_cname() {
+		return family_cname;
+	}
+	public void setFamily_cname(String family_cname) {
+		this.family_cname = family_cname;
+	}
+	public String getFamily_ename() {
+		return family_ename;
+	}
+	public void setFamily_ename(String family_ename) {
+		this.family_ename = family_ename;
+	}
+	public String getFamily_enamee() {
+		return family_enamee;
+	}
+	public void setFamily_enamee(String family_enamee) {
+		this.family_enamee = family_enamee;
+	}
+	public String getFamily_spelling() {
+		return family_spelling;
+	}
+	public void setFamily_spelling(String family_spelling) {
+		this.family_spelling = family_spelling;
+	}
+	public String getFamily_summarize() {
+		return family_summarize;
+	}
+	public void setFamily_summarize(String family_summarize) {
+		this.family_summarize = family_summarize;
+	}
+	public String getFamily_notes() {
+		return family_notes;
+	}
+	public void setFamily_notes(String family_notes) {
+		this.family_notes = family_notes;
+	}
+	public String getFamily_literature() {
+		return family_literature;
+	}
+	public void setFamily_literature(String family_literature) {
+		this.family_literature = family_literature;
+	}
+	public String getOrder_id_fk() {
+		return order_id_fk;
+	}
+	public void setOrder_id_fk(String order_id_fk) {
+		this.order_id_fk = order_id_fk;
+	}
+	public int getSubreginal_id_fk() {
+		return subreginal_id_fk;
+	}
+	public void setSubreginal_id_fk(int subreginal_id_fk) {
+		this.subreginal_id_fk = subreginal_id_fk;
+	}
+	
+	
+}	

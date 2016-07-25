@@ -1,0 +1,84 @@
+package com.jxapq.vo;
+
+public class Order {
+	private String order_id;
+	private String order_sname;
+	private String order_cname;
+	private String order_ename;
+	private String order_spelling;
+	private String order_summarize;
+	private String class_id_fk;
+	
+	public Order() {
+
+	}
+
+	public Order(String order_sname, String order_cname, String order_ename,
+			String order_spelling, String order_summarize, String class_id_fk) {
+		super();
+		this.order_sname = order_sname;
+		this.order_cname = order_cname;
+		this.order_ename = order_ename;
+		this.order_spelling = order_spelling;
+		this.order_summarize = order_summarize;
+		this.class_id_fk = class_id_fk;
+	}
+
+	public String getOrder_id() {
+		return order_id;
+	}
+
+	public void setOrder_id(String order_id) {
+		this.order_id = order_id;
+	}
+
+	public String getOrder_sname() {
+		return order_sname;
+	}
+
+	public void setOrder_sname(String order_sname) {
+		this.order_sname = order_sname;
+	}
+
+	public String getOrder_cname() {
+		return order_cname;
+	}
+
+	public void setOrder_cname(String order_cname) {
+		this.order_cname = order_cname;
+	}
+
+	public String getOrder_ename() {
+		return order_ename;
+	}
+
+	public void setOrder_ename(String order_ename) {
+		this.order_ename = order_ename;
+	}
+
+	public String getOrder_spelling() {
+		return order_spelling;
+	}
+
+	public void setOrder_spelling(String order_spelling) {
+		this.order_spelling = order_spelling;
+	}
+
+	public String getOrder_summarize() {
+		return order_summarize;
+	}
+
+	public void setOrder_summarize(String order_summarize) {
+		this.order_summarize = order_summarize;
+	}
+
+	public String getClass_id_fk() {
+		return class_id_fk;
+	}
+
+	public void setClass_id_fk(String class_id_fk) {
+		this.class_id_fk = class_id_fk;
+	}
+	
+	
+}

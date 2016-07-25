@@ -1,0 +1,241 @@
+package com.jxapq.service.util;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.dom4j.io.SAXReader;
+
+import com.jxapq.annotation.FieldAnnotation;
+import com.jxapq.dao.util.ParseXML;
+import com.jxapq.dao.util.voClass;
+import com.jxapq.exception.UtilException;
+
+
+public class ExcelUtils {
+	public static String[] getFieldFName(HSSFWorkbook workBook,String viewName) throws UtilException{
+		HSSFSheet sheet=workBook.getSheetAt(0);
+		Row firstRow=sheet.getRow(0);
+		short firstRowCellNum=firstRow.getLastCellNum();
+		String[] transTitle=new String[firstRowCellNum];
+		try {
+			/*
+			 * 根据配置文件获得视图的类
+			 * */
+			//这里现在是根据viewname对应多个class.那么我这里要生成多个class。
+			voClass vo=ParseXML.parsexml("/D:/tomcat_7.0.57/webapps/JXAPQ/WEB-INF/classes/com/jxapq/config/SqlVO.xml", viewName);
+			SAXReader reader=new SAXReader();
+			String className=vo.getVoname();
+			Class clazz3=Class.forName(className);
+			List<Class> list=new ArrayList<Class>();
+			list.add(clazz3);
+			
+			for(int j=0;j<firstRowCellNum;j++){
+				String value=readCellValue((HSSFCell)firstRow.getCell(j));
+				for(int i=0;i<list.size();i++){
+					Class clazz=list.get(i);
+					Field[] fields=clazz.getDeclaredFields();
+					for(Field field:fields){
+						FieldAnnotation annotation=field.getAnnotation(FieldAnnotation.class);
+						if(annotation.cname().equals(value)){
+							transTitle[j]=annotation.fname();
+							break;
+						}
+					}
+				}
+			}
+			return transTitle;
+		}catch(ClassNotFoundException e){
+			throw new UtilException(e);
+		}
+	}
+	/**
+	 * @param workBook
+	 * @param flag 代表已经解析了的数量
+	 * @return返回下一步要生成的数组的数量
+	 */
+	public static int newExplainedNum(HSSFWorkbook workBook,int hasExplainedNum){
+		HSSFSheet sheet=workBook.getSheetAt(0);
+		int newArrayNum=sheet.getLastRowNum()-hasExplainedNum+1;
+		//如果剩余的不够10条记录，那么就只new这么些刚好能够存放的字符串大小的数组
+		if(newArrayNum<=10){
+			return newArrayNum;
+		}else{
+			return 10;
+		}
+	}
+	
+	public static String[] getExcelData(HSSFWorkbook workBook,String[] transTitle,int hasExplainedNum){
+		//如果剩余的不够10条记录，那么就只new这么些刚好能够存放的字符串大小的数组
+		int newArrayNum=newExplainedNum(workBook,hasExplainedNum);
+		HSSFSheet sheet=workBook.getSheetAt(0);
+		String[] data;
+		if(newArrayNum<=10){
+			data=new String[newArrayNum];
+		}else{
+			data=new String[10];
+		}
+		int currentFlag=0;
+		for(int i=hasExplainedNum;i<hasExplainedNum+newArrayNum;i++){
+			StringBuffer sb=new StringBuffer();
+			HSSFRow row=sheet.getRow(i);
+			for(int j=0;j<row.getLastCellNum();j++){
+				HSSFCell cell=row.getCell(j);
+				String cellValue=readCellValue(cell);
+				if(j==row.getLastCellNum()-1){
+					sb.append(transTitle[j]+"#%$#"+cellValue);
+				}else{
+					sb.append(transTitle[j]+"#%$#"+cellValue+"%+%");
+				}
+			}
+			data[currentFlag++]=sb.toString();
+		}
+		return data;
+	}
+	
+	
+	
+	
+	
+	public static String[] getFieldFName(XSSFWorkbook workBook,String viewName) throws UtilException{
+		XSSFSheet sheet=workBook.getSheetAt(0);
+		Row firstRow=sheet.getRow(0);
+		short firstRowCellNum=firstRow.getLastCellNum();
+		String[] transTitle=new String[firstRowCellNum];
+		try {
+			/*
+			 * 根据配置文件获得视图的类
+			 * */
+			//这里现在是根据viewname对应多个class.那么我这里要生成多个class。
+			voClass vo=ParseXML.parsexml("/D:/tomcat_7.0.57/webapps/JXAPQ/WEB-INF/classes/com/jxapq/config/SqlVO.xml", viewName);
+			SAXReader reader=new SAXReader();
+			String className=vo.getVoname();
+			Class clazz3=Class.forName(className);
+			List<Class> list=new ArrayList<Class>();
+			list.add(clazz3);
+			
+			for(int j=0;j<firstRowCellNum;j++){
+				String value=readCellValue((XSSFCell)firstRow.getCell(j));
+				for(int i=0;i<list.size();i++){
+					Class clazz=list.get(i);
+					Field[] fields=clazz.getDeclaredFields();
+					for(Field field:fields){
+						FieldAnnotation annotation=field.getAnnotation(FieldAnnotation.class);
+						if(annotation.cname().equals(value)){
+							transTitle[j]=annotation.fname();
+							break;
+						}
+					}
+				}
+			}
+			return transTitle;
+		}catch(ClassNotFoundException e){
+			throw new UtilException(e);
+		}
+	}
+	/**
+	 * 
+	 * @param workBook
+	 * @param flag 代表已经解析了的数量
+	 * @return返回下一步要生成的数组的数量
+	 */
+	public static int newExplainedNum(XSSFWorkbook workBook,int hasExplainedNum){
+		XSSFSheet sheet=workBook.getSheetAt(0);
+		int newArrayNum=sheet.getLastRowNum()-hasExplainedNum+1;
+		//如果剩余的不够10条记录，那么就只new这么些刚好能够存放的字符串大小的数组
+		if(newArrayNum<=10){
+			return newArrayNum;
+		}else{
+			return 10;
+		}
+	}
+	
+	public static String[] getExcelData(XSSFWorkbook workBook,String[] transTitle,int hasExplainedNum){
+		//如果剩余的不够10条记录，那么就只new这么些刚好能够存放的字符串大小的数组
+		int newArrayNum=newExplainedNum(workBook,hasExplainedNum);
+		XSSFSheet sheet=workBook.getSheetAt(0);
+		String[] data;
+		if(newArrayNum<=10){
+			data=new String[newArrayNum];
+		}else{
+			data=new String[10];
+		}
+		int currentFlag=0;
+		for(int i=hasExplainedNum;i<hasExplainedNum+newArrayNum;i++){
+			StringBuffer sb=new StringBuffer();
+			XSSFRow row=sheet.getRow(i);
+			for(int j=0;j<row.getLastCellNum();j++){
+				XSSFCell cell=row.getCell(j);
+				String cellValue=readCellValue(cell);
+				if(j==row.getLastCellNum()-1){
+					sb.append(transTitle[j]+"#%$#"+cellValue);
+				}else{
+					sb.append(transTitle[j]+"#%$#"+cellValue+"%+%");
+				}
+			}
+			data[currentFlag++]=sb.toString();
+		}
+		return data;
+	}
+	
+	
+	
+	private static String readCellValue(HSSFCell cell){
+		String value = null;
+		if(cell.getCellType()==Cell.CELL_TYPE_BLANK){
+			value="";
+		}
+		else if(cell.getCellType()==Cell.CELL_TYPE_BOOLEAN){
+			Boolean bool= cell.getBooleanCellValue();
+			if(bool.booleanValue()==true){
+				value= "true";
+			}else{
+				value= "false";
+			}
+		}
+		else if(cell.getCellType()==Cell.CELL_TYPE_NUMERIC){
+			value= (int)cell.getNumericCellValue()+"";
+		}
+		else if(cell.getCellType()==Cell.CELL_TYPE_STRING){
+			value= cell.getStringCellValue();
+		}
+		return value;
+	}
+	private static String readCellValue(XSSFCell cell){
+		String value = null;
+		if(cell.getCellType()==Cell.CELL_TYPE_BLANK){
+			value="";
+		}
+		else if(cell.getCellType()==Cell.CELL_TYPE_BOOLEAN){
+			Boolean bool= cell.getBooleanCellValue();
+			if(bool.booleanValue()==true){
+				value= "true";
+			}else{
+				value= "false";
+			}
+		}
+		else if(cell.getCellType()==Cell.CELL_TYPE_NUMERIC){
+			value= (int)cell.getNumericCellValue()+"";
+		}
+		else if(cell.getCellType()==Cell.CELL_TYPE_STRING){
+			value= cell.getStringCellValue();
+		}
+		return value;
+	}
+	
+	
+	
+	
+	
+}
+	

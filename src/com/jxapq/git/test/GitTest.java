@@ -7,7 +7,7 @@ public class GitTest {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-         System.out.println("Hello Git Test05");
+         System.out.println("Hello Git Test06");
 	}
 
 }

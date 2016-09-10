@@ -49,7 +49,6 @@ public class Species {
 	private String species_literature;				//参考文献
 	private String fucus_id_fk;						//属id
 	
-	
 
 	public String getPicture_url() {
 		return picture_url;

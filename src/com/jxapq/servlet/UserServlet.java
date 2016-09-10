@@ -92,6 +92,7 @@ public class UserServlet extends HttpServlet {
 				request.getRequestDispatcher(errorName).forward(request, response);
 				return;
 			}
+			 
 			
 			if((list.get(0)) instanceof User){
 				User user = (User) list.get(0);

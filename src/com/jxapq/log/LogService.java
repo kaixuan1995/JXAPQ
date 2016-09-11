@@ -13,7 +13,7 @@ public class LogService {
 	String path = this.getClass().getClassLoader().getResource("/").getPath()
 			+ "com/jxapq/config/Log.xml";
 
-	//增加日志
+	//增加日志dev
 	public void addLog(String voName, String log_type, String user_id)
 			throws DBException {
 		Log log = ParseLogXML.parseLogXml(path, voName, log_type);

@@ -14,6 +14,9 @@ public class LogService {
 			+ "com/jxapq/config/Log.xml";
 
 	//增加日志我是dev
+	//123dev
+	//234dev
+	//public void addLog(String
 	public void addLog(String voName, String log_type, String user_id)
 			throws DBException {
 		Log log = ParseLogXML.parseLogXml(path, voName, log_type);
